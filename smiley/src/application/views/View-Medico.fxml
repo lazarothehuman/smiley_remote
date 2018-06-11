@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane onKeyPressed="#enterKeyPressed" prefHeight="600.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.ViewMedicoController">
+   <children>
+      <SplitPane dividerPositions="0.14046822742474915" layoutX="169.0" layoutY="28.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <items>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="27.0" prefWidth="1129.0" style="-fx-background-color: #000000;">
+               <children>
+                  <Pane id="headerPane" fx:id="mainTab" layoutY="-2.0" prefHeight="89.0" prefWidth="144.0" style="-fx-background-color: #ea9400;">
+                     <children>
+                        <VBox alignment="CENTER" layoutX="1.0" layoutY="3.0" prefHeight="81.0" prefWidth="144.0">
+                           <children>
+                              <Label fx:id="lblUser" alignment="CENTER" layoutX="9.0" layoutY="14.0" prefHeight="25.0" prefWidth="115.0" text="Candinha" textFill="WHITE">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblProfile" alignment="CENTER" layoutX="9.0" layoutY="36.0" prefHeight="34.0" prefWidth="140.0" text="Directora" textFill="WHITE" wrapText="true" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </Pane>
+                  <Label alignment="TOP_CENTER" layoutX="146.0" layoutY="6.0" prefHeight="81.0" prefWidth="1132.0" style="-fx-background-color: #ea9400;" text=" Visualizar Médicos" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="146.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" layoutX="575.0" layoutY="46.0" prefHeight="25.0" prefWidth="274.0">
+                     <children>
+                        <Hyperlink fx:id="home" layoutX="604.0" layoutY="43.0" onAction="#goHome" onMouseClicked="#goHome" text="Home" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Hyperlink>
+                        <Hyperlink fx:id="about" layoutX="725.0" layoutY="43.0" onAction="#about" onMouseClicked="#about" text="Sobre" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Hyperlink>
+                     </children>
+                  </HBox>
+                  <ImageView fitHeight="70.0" fitWidth="83.0" layoutX="1194.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="brilhodental.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="488.0" prefWidth="1278.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <TableView fx:id="tableMedico" layoutX="3.0" onMouseClicked="#doubleClickOnMedico" prefHeight="465.0" prefWidth="1053.0" style="-fx-border-width: 2; -fx-border-color: #000000;">
+                     <columns>
+                        <TableColumn fx:id="nomeColumn" prefWidth="200.0" text="Nome" />
+                        <TableColumn fx:id="dataColumn" prefWidth="153.0" text="Data de nascimento" />
+                        <TableColumn fx:id="emailColumn" minWidth="0.0" prefWidth="234.0" text="E-mail" />
+                        <TableColumn fx:id="sexoColumn" prefWidth="146.0" text="Sexo" />
+                        <TableColumn fx:id="telefoneColumn" prefWidth="192.0" text="Telefone" />
+                        <TableColumn fx:id="activeColumn" prefWidth="123.0" text="Active" />
+                     </columns>
+                  </TableView>
+                  <Label alignment="CENTER" layoutX="1092.0" layoutY="14.0" prefHeight="36.0" prefWidth="172.0" style="-fx-border-color: #ea9400; -fx-background-color: #ea9400;" text="Pesquisa avançada" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <VBox alignment="CENTER" layoutX="1070.0" layoutY="75.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="389.0" prefWidth="205.0" spacing="25.0">
+                     <children>
+                        <HBox alignment="CENTER" layoutX="1082.0" layoutY="46.0" spacing="5.0" style="-fx-padding: 3;">
+                           <children>
+                              <Label layoutX="1082.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="17.0" prefWidth="45.0" text="Nome:" />
+                              <TextField fx:id="nomeTf" layoutX="1145.0" layoutY="46.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="1082.0" layoutY="88.0" spacing="5.0" style="-fx-padding: 3;">
+                           <children>
+                              <Label layoutX="1082.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="17.0" prefWidth="38.0" text="Email:" />
+                              <TextField fx:id="emailTf" layoutX="1145.0" layoutY="46.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="1083.0" layoutY="132.0" style="-fx-padding: 5;">
+                           <children>
+                              <Label layoutX="1082.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="58.0" text="Telefone:" wrapText="true" />
+                              <TextField fx:id="telefoneTf" layoutX="1145.0" layoutY="46.0" prefHeight="25.0" prefWidth="133.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="5.0">
+                           <children>
+                              <Label text="Data Inicio:" />
+                              <DatePicker fx:id="dataInicio" prefHeight="25.0" prefWidth="115.0" promptText="(ex..07-07-1997)" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="5.0">
+                           <children>
+                              <Label text="Data Fim" />
+                              <DatePicker fx:id="dataFim" prefHeight="25.0" prefWidth="121.0" promptText="(ex..07-07-1997)" />
+                           </children>
+                        </HBox>
+                        <ComboBox fx:id="sexoCombo" layoutX="1083.0" layoutY="208.0" prefWidth="150.0" promptText="Escolha o sexo" />
+                        <CheckBox fx:id="active" layoutX="1083.0" layoutY="256.0" mnemonicParsing="false" text="Mostrar inactivos" />
+                        <JFXButton fx:id="pesquisar" layoutX="1108.0" layoutY="299.0" onAction="#pesquisar" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #ea9400;" text="Pesquisar" textFill="WHITE" />
+                     </children>
+                  </VBox>
+                  <HBox layoutX="33.0" layoutY="471.0" spacing="15.0">
+                     <children>
+                        <JFXButton fx:id="adicionarMedico" layoutX="34.0" layoutY="472.0" onAction="#addMedico" style="-fx-background-color: #ea9400; -fx-padding: 5; -fx-border-insets: 5; -fx-background-insets: 5;" text="Adicionar novo médico" textFill="WHITE" />
+                        <JFXButton fx:id="modificarMedico" layoutX="184.0" layoutY="472.0" onAction="#modificarMedico" style="-fx-background-color: #ea9400; -fx-background-insets: 5; -fx-border-insets: 5; -fx-padding: 5;" text="Modificar médico" textFill="WHITE" />
+                        <JFXButton fx:id="removerMedico" layoutX="306.0" layoutY="472.0" onAction="#removerMedico" style="-fx-background-color: #ea9400; -fx-padding: 5; -fx-border-insets: 5; -fx-background-insets: 5;" text="Remover médico" textFill="WHITE" />
+                     </children>
+                  </HBox>
+                  <Label layoutX="877.0" layoutY="473.0" text="Total de itens na procura:">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblTotal" layoutX="1030.0" layoutY="473.0" text="0" />
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

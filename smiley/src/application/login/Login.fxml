@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.login.LoginController">
+   <children>
+      <Pane layoutX="170.0" layoutY="157.0" prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #ea9400; -fx-border-color: #ea9400; -fx-border-style: solid; -fx-border-width: 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="348.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="208.0" fitWidth="255.0" layoutX="73.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="brilhodental.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <ImageView fitHeight="150.0" fitWidth="134.0" layoutX="464.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="icons8-customer-96.png" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="username" focusColor="#ea9400" layoutX="395.0" layoutY="250.0" maxWidth="272.0" minWidth="229.0" prefHeight="45.0" prefWidth="272.0" promptText="Usuario" unFocusColor="#ea9400">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXTextField>
+      <Hyperlink fx:id="forgotPassword" layoutX="401.0" layoutY="380.0" onAction="#forgottenPassword" text="Esqueceu a password?" />
+      <JFXButton fx:id="aceder" layoutX="598.0" layoutY="379.0" onAction="#aceder" style="-fx-background-color: #ea9400;" text="Aceder" textFill="WHITE" />
+      <JFXPasswordField fx:id="password" focusColor="#ea9400" layoutX="395.0" layoutY="306.0" maxWidth="272.0" minWidth="272.0" onKeyPressed="#enterKeyPressed" prefHeight="31.0" prefWidth="272.0" promptText="Senha" unFocusColor="#ea9400">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXPasswordField>
+   </children>
+</AnchorPane>

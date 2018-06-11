@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="400.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.forms.AddMedicoController">
+   <children>
+      <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #ea9400;" text="ADICIONAR MEDICO" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="add" fitHeight="58.0" fitWidth="59.0" layoutX="176.0" layoutY="707.0" onMouseClicked="#add" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="icons8-plus-filled-100.png" />
+         </image>
+      </ImageView>
+      <VBox alignment="CENTER" layoutX="56.0" layoutY="145.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="510.0" prefWidth="288.0" spacing="85.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="298.0" spacing="15.0">
+               <children>
+                  <Label fx:id="nome_lbl" text="Nome:" textFill="RED" />
+                  <JFXTextField fx:id="nameTF" focusColor="#ea9400" layoutX="45.0" layoutY="161.0" maxWidth="231.0" minWidth="180.0" prefHeight="35.0" prefWidth="215.0" promptText="Insira o nome" unFocusColor="#ea9400" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="49.0" prefWidth="309.0" spacing="15.0">
+               <children>
+                  <Label fx:id="sexo_lbl" text="Gênero:" textFill="RED" />
+                  <JFXComboBox fx:id="comboSex" prefHeight="39.0" prefWidth="215.0" promptText="Insira o gênero " />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="31.0" prefWidth="308.0" spacing="15.0">
+               <children>
+                  <Label text="Email:" />
+                  <JFXTextField fx:id="emailTF" focusColor="#ea9400" layoutX="51.0" layoutY="213.0" maxWidth="231.0" minWidth="174.0" prefHeight="31.0" prefWidth="209.0" promptText="Insira o e-mail" unFocusColor="#ea9400" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="32.0" prefWidth="309.0" spacing="15.0">
+               <children>
+                  <Label text="Telefone:" />
+                  <JFXTextField fx:id="phoneTF" focusColor="#ea9400" layoutX="51.0" layoutY="276.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="174.0" prefHeight="32.0" prefWidth="198.0" promptText="Insira o telefone" unFocusColor="#ea9400" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="36.0" prefWidth="311.0" spacing="15.0">
+               <children>
+                  <Label fx:id="data_lbl" text="Data" textFill="RED" />
+                  <DatePicker fx:id="dateNasc" editable="false" layoutX="76.0" layoutY="332.0" prefHeight="36.0" prefWidth="191.0" promptText="Insira data de nascimento" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

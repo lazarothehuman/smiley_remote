@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="850.0" style="-fx-background-color: #ffddb2;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.MainController">
+   <children>
+      <Pane id="headerPane" fx:id="mainTab" layoutX="73.0" layoutY="22.0" onMouseClicked="#clickOnUserInfo" prefHeight="65.0" prefWidth="150.0" style="-fx-background-color: #ea9400;" AnchorPane.bottomAnchor="587.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="703.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="lblUser" alignment="CENTER" layoutX="9.0" layoutY="14.0" prefHeight="25.0" prefWidth="115.0" text="Candinha" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblProfile" alignment="CENTER" layoutX="9.0" layoutY="36.0" prefHeight="17.0" prefWidth="115.0" text="Directora" textFill="WHITE" wrapText="true" />
+         </children>
+      </Pane>
+      <Pane layoutY="63.0" prefHeight="595.0" prefWidth="147.0" style="-fx-background-color: #ea9400; -fx-border-color: #000000;">
+         <children>
+            <VBox fx:id="vBoxAdd" alignment="CENTER" layoutX="6.0" layoutY="149.0" onMouseClicked="#addClient" prefHeight="141.0" prefWidth="136.0">
+               <children>
+                  <ImageView fx:id="add" fitHeight="87.0" fitWidth="78.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="plusicon.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="39.0" layoutY="84.0" text="Adicionar cliente" textFill="WHITE" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="6.0" layoutY="331.0" prefHeight="141.0" prefWidth="136.0">
+               <children>
+                  <ImageView fx:id="closing" fitHeight="63.0" fitWidth="63.0" layoutX="275.0" layoutY="14.0" onMouseClicked="#unavailable" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="icons8-purchase-order-96.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="268.0" layoutY="85.0" text="Fecho de caixa" textFill="WHITE" />
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+      <Label alignment="CENTER" layoutX="199.0" layoutY="173.0" prefHeight="41.0" prefWidth="357.0" text="Aniversários de hoje" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" layoutX="147.0" prefHeight="63.0" prefWidth="703.0" spacing="25.0" style="-fx-background-color: #ea9400;">
+         <children>
+            <HBox fx:id="vBoxMarcacao" alignment="CENTER" layoutX="11.0" layoutY="293.0" onMouseClicked="#setMarcacaoAsSelectedLabel" prefHeight="61.0" prefWidth="117.0" spacing="5.0">
+               <children>
+                  <ImageView fitHeight="42.0" fitWidth="33.0" layoutX="14.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="icons8-calendar-filled-96.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lblMarcacao" layoutX="54.0" layoutY="49.0" onMouseClicked="#marcar" text="Marcacao" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="vBoxProcura" alignment="CENTER" layoutX="11.0" layoutY="127.0" onMouseClicked="#setProcuraAsSelectedLabel" spacing="5.0">
+               <children>
+                  <ImageView fitHeight="42.0" fitWidth="33.0" layoutX="14.0" layoutY="41.0" onMouseClicked="#setProcuraAsSelectedLabel" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="icons8-search-96.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lblProcura" layoutX="54.0" layoutY="49.0" onMouseClicked="#setProcuraAsSelectedLabel" text="Procura" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="vBoxRegistro" alignment="CENTER" layoutX="11.0" layoutY="44.0" onMouseClicked="#setRegistroAsSelectedLabel" spacing="5.0">
+               <children>
+                  <ImageView fitHeight="42.0" fitWidth="33.0" layoutX="14.0" layoutY="41.0" onMouseClicked="#setRegistroAsSelectedLabel" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="icons8-home-96.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lblRegistro" layoutX="54.0" layoutY="49.0" onMouseClicked="#setRegistroAsSelectedLabel" text="Registro" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="vBoxRelatorios" alignment="CENTER" layoutX="11.0" layoutY="210.0" onMouseClicked="#setRelatoriosAsSelectedLabel" prefHeight="63.0" prefWidth="145.0" spacing="5.0">
+               <children>
+                  <ImageView fitHeight="42.0" fitWidth="33.0" layoutX="14.0" layoutY="41.0" onMouseClicked="#setRelatoriosAsSelectedLabel" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="icons8-report-card-96.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lblRelatorios" layoutX="54.0" layoutY="49.0" onMouseClicked="#setRelatoriosAsSelectedLabel" prefHeight="33.0" prefWidth="89.0" text="Relatorios" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="754.0" layoutY="602.0" spacing="5.0">
+         <children>
+            <ImageView fitHeight="42.0" fitWidth="33.0" layoutX="14.0" layoutY="41.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="icons8-shutdown-96.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lblLogout" layoutX="54.0" layoutY="49.0" onMouseClicked="#logout" text="Logout" textAlignment="CENTER" textFill="RED">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Pane fx:id="sideTab" layoutX="147.0" layoutY="63.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="95.0" prefWidth="703.0" style="-fx-background-color: #fbb64f;">
+         <children>
+            <HBox alignment="CENTER" layoutX="75.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="74.0" prefWidth="553.0" spacing="70.0">
+               <children>
+                  <VBox fx:id="vBoxCliente" alignment="CENTER" layoutX="11.0" layoutY="222.0" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#selectCliente" prefHeight="73.0" prefWidth="71.0" style="-fx-padding: 5; -fx-background-insets: 5; -fx-border-insets: 5;">
+                     <children>
+                        <ImageView fitHeight="56.0" fitWidth="96.0" layoutX="11.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="icons8-sick-80.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="Cliente" textFill="WHITE" />
+                     </children>
+                  </VBox>
+                  <VBox fx:id="vBoxMedico" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#selectMedico" prefHeight="73.0" prefWidth="76.0" style="-fx-padding: 5; -fx-background-insets: 5; -fx-border-insets: 5;">
+                     <children>
+                        <ImageView fitHeight="56.0" fitWidth="96.0" layoutX="11.0" layoutY="345.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="icons8-medical-doctor-80.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="Médico" textFill="WHITE" />
+                     </children>
+                  </VBox>
+                  <VBox fx:id="vBoxUser" alignment="CENTER" layoutX="11.0" layoutY="99.0" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#selectUsuario" prefHeight="73.0" prefWidth="75.0" style="-fx-background-insets: 5; -fx-border-insets: 5; -fx-padding: 5;">
+                     <children>
+                        <ImageView fitHeight="56.0" fitWidth="96.0" layoutX="11.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="icons8-administrator-male-80.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="BOTTOM_CENTER" text="Usuário" textFill="WHITE" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      <TableView fx:id="listClients" layoutX="154.0" layoutY="224.0" onMouseClicked="#doubleClickOnBirthDayClient" prefHeight="318.0" prefWidth="463.0" style="-fx-background-color: #ffddb2; -fx-border-color: #000000;">
+        <columns>
+          <TableColumn fx:id="nomeCliente" editable="false" prefWidth="240.0" resizable="false" text="Nome" />
+          <TableColumn fx:id="dataNascimento" editable="false" prefWidth="220.0" resizable="false" text="Data de Nascimento" />
+        </columns>
+      </TableView>
+      <Pane layoutX="650.0" layoutY="224.0" prefHeight="318.0" prefWidth="176.0" style="-fx-background-color: #ea9400;">
+         <children>
+            <Label fx:id="lblGreetings" layoutX="37.0" layoutY="14.0" prefHeight="74.0" prefWidth="117.0" text="Bom dia!" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <VBox alignment="CENTER" layoutX="10.0" layoutY="94.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="130.0" prefWidth="156.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="49.0" prefWidth="156.0" spacing="5.0">
+                     <children>
+                        <Label layoutX="7.0" layoutY="57.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="35.0" prefWidth="95.0" text="#Consultas hoje:" textFill="WHITE" wrapText="true" HBox.hgrow="NEVER">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblDailyConsultas" maxHeight="-Infinity" maxWidth="-Infinity" text="0" textFill="WHITE">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="151.0">
+                     <children>
+                        <Label layoutX="7.0" layoutY="104.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="35.0" prefWidth="120.0" text="#Consultas semana: " textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblWeekConsultas" maxHeight="-Infinity" maxWidth="-Infinity" text="0" textFill="WHITE">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+      <Pane layoutX="269.0" layoutY="616.0" prefHeight="33.0" prefWidth="381.0" style="-fx-background-color: #ea9400;">
+         <children>
+            <Label fx:id="devMessage" layoutX="77.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" textFill="WHITE" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,1 @@
+update cliente set hasEncarregado=0;

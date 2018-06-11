@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="700.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.forms.ModifyClientController">
+   <children>
+      <Label alignment="CENTER" prefHeight="106.0" prefWidth="700.0" style="-fx-background-color: #ea9400;" text="MODIFICAR CLIENTE" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <VBox layoutX="25.0" layoutY="196.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="370.0" prefWidth="664.0" spacing="30.0">
+         <children>
+            <HBox>
+               <children>
+                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="36.0" prefWidth="669.0" spacing="15.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="298.0" spacing="15.0">
+                           <children>
+                              <Label fx:id="nome_lbl" text="Nome:" textFill="RED" />
+                              <JFXTextField fx:id="nameTF" focusColor="#ea9400" layoutX="45.0" layoutY="161.0" maxWidth="231.0" minWidth="180.0" prefHeight="35.0" prefWidth="215.0" promptText="Insira o nome" unFocusColor="#ea9400" />
+                           </children>
+                        </HBox>
+                        <Label fx:id="data_lbl" prefHeight="17.0" prefWidth="126.0" text="Data de nascimento" textFill="RED" />
+                        <DatePicker fx:id="dateNasc" editable="false" layoutX="76.0" layoutY="332.0" prefHeight="36.0" prefWidth="191.0" promptText="Insira data de nascimento" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="32.0" prefWidth="309.0" spacing="15.0">
+                     <children>
+                        <Label text="Telefone:" />
+                        <JFXTextField fx:id="phoneTF" focusColor="#ea9400" layoutX="51.0" layoutY="276.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="174.0" prefHeight="32.0" prefWidth="198.0" promptText="Insira o telefone" unFocusColor="#ea9400" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="49.0" prefWidth="365.0" spacing="15.0">
+                     <children>
+                        <Label fx:id="sexo_lbl" text="Gênero:" textFill="RED" />
+                        <JFXComboBox fx:id="comboSex" prefHeight="29.0" prefWidth="215.0" promptText="Insira o gênero " />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="31.0" prefWidth="308.0" spacing="15.0">
+                     <children>
+                        <Label text="Email:" />
+                        <JFXTextField fx:id="emailTF" focusColor="#ea9400" layoutX="51.0" layoutY="213.0" maxWidth="231.0" minWidth="174.0" prefHeight="31.0" prefWidth="209.0" promptText="Insira o e-mail" unFocusColor="#ea9400" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="31.0" prefWidth="308.0" spacing="15.0">
+                     <children>
+                        <Label text="Naturalidade:" textFill="RED" />
+                        <JFXTextField fx:id="naturalidadeTf" focusColor="#ea9400" layoutX="51.0" layoutY="213.0" maxWidth="231.0" minWidth="174.0" prefHeight="31.0" prefWidth="215.0" promptText="Insira a naturalidade" unFocusColor="#ea9400" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="106.0" prefWidth="664.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="31.0" prefWidth="308.0" spacing="15.0">
+                     <children>
+                        <Label text="Morada" />
+                        <JFXTextField fx:id="moradaTf" focusColor="#ea9400" layoutX="51.0" layoutY="213.0" maxWidth="231.0" minWidth="174.0" prefHeight="31.0" prefWidth="209.0" promptText="Insira a morada" unFocusColor="#ea9400" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="106.0" prefWidth="357.0">
+                     <children>
+                        <Label text="Notas importantes:" />
+                        <TextField fx:id="notasImportantesTf" prefHeight="103.0" prefWidth="253.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <CheckBox fx:id="encarregadoCb" mnemonicParsing="false" onAction="#selectCheckBox" text="Tem encarregado?" />
+         </children>
+      </VBox>
+      <ImageView fx:id="add" fitHeight="84.0" fitWidth="78.0" layoutX="311.0" layoutY="716.0" onMouseClicked="#modify" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="icons8-plus-filled-100.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="25.0" layoutY="153.0" prefHeight="31.0" prefWidth="664.0" text="Dados pessoais" textFill="#ea9400">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="566.0" prefHeight="31.0" prefWidth="163.0" text="Dados encarregado" textFill="#ea9400">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <VBox layoutX="20.0" layoutY="608.0" prefHeight="96.0" prefWidth="308.0" spacing="15.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" layoutX="141.0" layoutY="655.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="298.0" spacing="15.0">
+               <children>
+                  <Label fx:id="nome_lbl1" text="Nome:" textFill="RED" />
+                  <JFXTextField fx:id="encarregadoNomeTf" disable="true" focusColor="#ea9400" layoutX="45.0" layoutY="161.0" maxWidth="231.0" minWidth="180.0" prefHeight="35.0" prefWidth="215.0" promptText="Insira o nome" unFocusColor="#ea9400" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="141.0" layoutY="710.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="32.0" prefWidth="309.0" spacing="15.0">
+               <children>
+                  <Label text="Telefone:" textFill="RED" />
+                  <JFXTextField fx:id="encarregadoTelefoneTf" disable="true" focusColor="#ea9400" layoutX="51.0" layoutY="276.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="174.0" prefHeight="32.0" prefWidth="198.0" promptText="Insira o telefone" unFocusColor="#ea9400" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Line endX="650.0" layoutX="20.0" layoutY="184.0" stroke="#c2c2c2" />
+      <Line endX="650.0" layoutX="20.0" layoutY="600.0" stroke="#c2c2c2" />
+   </children>
+</AnchorPane>

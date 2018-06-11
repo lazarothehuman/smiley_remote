@@ -1,0 +1,3 @@
+CREATE USER 'smiley'@'localhost' IDENTIFIED BY 'sorrisolindo';
+GRANT ALL PRIVILEGES ON smiley.* TO 'smiley'@'localhost';
+FLUSH PRIVILEGES;

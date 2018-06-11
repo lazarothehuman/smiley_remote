@@ -1,0 +1,1 @@
+insert into profile(profilename, active) values ('Registrador', 1);
