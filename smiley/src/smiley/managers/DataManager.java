@@ -5,8 +5,11 @@ import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 import java.util.Date;
 import java.util.List;
+
 import smiley.models.Cliente;
+import smiley.models.Consulta;
 import smiley.models.Medico;
+import smiley.models.Procedimento;
 import smiley.models.Profile;
 import smiley.models.Sexo;
 import smiley.models.User;
@@ -36,5 +39,7 @@ public interface DataManager {
 			Date selectedEndDate, Sexo sexo, Boolean activee);
 	public Profile findProfile(String string);
 	public User findUser(long id);
+	public void createConsulta(Consulta consulta);
+	public void createProcedimento(Procedimento procedimento);
 
 }

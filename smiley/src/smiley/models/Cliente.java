@@ -1,6 +1,8 @@
 package smiley.models;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Type;
 
@@ -55,6 +58,9 @@ public class Cliente {
 	
 	@Column(name="notasImportantes")
 	private String notasImportantes;
+	
+	@OneToMany(mappedBy="cliente")
+	private List<Consulta> consultas = new ArrayList<>();
 	
 	@Column(nullable = false, columnDefinition = "bit")
 	private Boolean active = true;
@@ -155,6 +161,14 @@ public class Cliente {
 		this.active = active;
 	}
 	
+	public List<Consulta> getConsultas() {
+		return consultas;
+	}
+
+	public void setConsultas(List<Consulta> consultas) {
+		this.consultas = consultas;
+	}
+
 	@Override
 	public String toString() {
 		return this.nome;

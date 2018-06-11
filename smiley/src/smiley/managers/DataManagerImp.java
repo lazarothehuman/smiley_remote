@@ -8,17 +8,23 @@ import java.util.Date;
 import java.util.List;
 
 import smiley.models.Cliente;
+import smiley.models.Consulta;
 import smiley.models.Medico;
+import smiley.models.Procedimento;
 import smiley.models.Profile;
 import smiley.models.Sexo;
 import smiley.models.User;
 import smiley.models.dao.ClienteDao;
+import smiley.models.dao.ConsultaDao;
 import smiley.models.dao.MedicoDao;
+import smiley.models.dao.ProcedimentoDao;
 import smiley.models.dao.ProfileDao;
 import smiley.models.dao.SessionHelperDao;
 import smiley.models.dao.UserDao;
 import smiley.models.dao.jpa.ClienteJpaDao;
+import smiley.models.dao.jpa.ConsultaJpaDao;
 import smiley.models.dao.jpa.MedicoJpaDao;
+import smiley.models.dao.jpa.ProcedimentoJpaDao;
 import smiley.models.dao.jpa.ProfileJpaDao;
 import smiley.models.dao.jpa.SessionHelperJpaDao;
 import smiley.models.dao.jpa.UserJpaDao;
@@ -29,8 +35,10 @@ public class DataManagerImp implements DataManager {
 	UserDao userDao = new UserJpaDao();
 	ProfileDao profileDao = new ProfileJpaDao();
 	ClienteDao clienteDao = new ClienteJpaDao();
-	private SessionHelperDao sessionHelperDao = new SessionHelperJpaDao();
+	SessionHelperDao sessionHelperDao = new SessionHelperJpaDao();
 	MedicoDao medicoDao = new MedicoJpaDao();
+	ConsultaDao consultadao = new ConsultaJpaDao();
+	ProcedimentoDao procedimentoDao = new ProcedimentoJpaDao();
 
 	@Override
 	public void createUser(User user) throws UnsupportedEncodingException, GeneralSecurityException {
@@ -174,5 +182,19 @@ public class DataManagerImp implements DataManager {
 	@Override
 	public User findUser(long id) {
 		return userDao.find(id);
+	}
+
+	@Override
+	public void createConsulta(Consulta consulta) {
+		if(consulta!=null)
+			consultadao.create(consulta);
+		
+	}
+
+	@Override
+	public void createProcedimento(Procedimento procedimento) {
+		if(procedimento!=null)
+			procedimentoDao.create(procedimento);
+		
 	}
 }

@@ -14,6 +14,7 @@
 		<class>smiley.models.Morada</class>
 		<class>smiley.models.Encarregado</class>
 		<class>smiley.utils.SessionHelper</class>
+		<class>smiley.models.Procedimento</class>
 		<properties>
 			<!-- Propriedades JDBC -->
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
