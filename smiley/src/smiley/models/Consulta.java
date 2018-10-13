@@ -10,8 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Consulta {
@@ -28,7 +28,7 @@ public class Consulta {
 	@JoinColumn(nullable=false)
 	private Medico medico;
 	
-	@OneToMany(mappedBy="consulta")
+	@ManyToMany
 	private List<Procedimento> procedimentos= new ArrayList<>();
 	
 	@ManyToOne
@@ -41,8 +41,6 @@ public class Consulta {
 	@Column(nullable = false)
 	private Double custoTotal;
 	
-
-
 	@Column(nullable=false, columnDefinition="bit")
 	private Boolean active= true;
 
@@ -106,8 +104,6 @@ public class Consulta {
 
 	public void setActive(Boolean active) {
 		this.active = active;
-	}
-	
-	
+	}	
 	
 }

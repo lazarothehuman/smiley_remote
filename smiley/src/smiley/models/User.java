@@ -49,8 +49,6 @@ public class User {
 		this.sessionHelper = sessionHelper;
 	}
 
-
-
 	public Long getId() {
 		return id;
 	}
