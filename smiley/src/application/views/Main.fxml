@@ -48,66 +48,6 @@
             <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
-      <HBox alignment="CENTER" layoutX="147.0" prefHeight="63.0" prefWidth="703.0" spacing="25.0" style="-fx-background-color: #ea9400;">
-         <children>
-            <HBox fx:id="vBoxMarcacao" alignment="CENTER" layoutX="11.0" layoutY="293.0" onMouseClicked="#setMarcacaoAsSelectedLabel" prefHeight="61.0" prefWidth="117.0" spacing="5.0">
-               <children>
-                  <ImageView fitHeight="42.0" fitWidth="33.0" layoutX="14.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="icons8-calendar-filled-96.png" />
-                     </image>
-                  </ImageView>
-                  <Label fx:id="lblMarcacao" layoutX="54.0" layoutY="49.0" onMouseClicked="#marcar" text="Marcacao" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox fx:id="vBoxProcura" alignment="CENTER" layoutX="11.0" layoutY="127.0" onMouseClicked="#setProcuraAsSelectedLabel" spacing="5.0">
-               <children>
-                  <ImageView fitHeight="42.0" fitWidth="33.0" layoutX="14.0" layoutY="41.0" onMouseClicked="#setProcuraAsSelectedLabel" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="icons8-search-96.png" />
-                     </image>
-                  </ImageView>
-                  <Label fx:id="lblProcura" layoutX="54.0" layoutY="49.0" onMouseClicked="#setProcuraAsSelectedLabel" text="Procura" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox fx:id="vBoxRegistro" alignment="CENTER" layoutX="11.0" layoutY="44.0" onMouseClicked="#setRegistroAsSelectedLabel" spacing="5.0">
-               <children>
-                  <ImageView fitHeight="42.0" fitWidth="33.0" layoutX="14.0" layoutY="41.0" onMouseClicked="#setRegistroAsSelectedLabel" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="icons8-home-96.png" />
-                     </image>
-                  </ImageView>
-                  <Label fx:id="lblRegistro" layoutX="54.0" layoutY="49.0" onMouseClicked="#setRegistroAsSelectedLabel" text="Registro" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox fx:id="vBoxRelatorios" alignment="CENTER" layoutX="11.0" layoutY="210.0" onMouseClicked="#setRelatoriosAsSelectedLabel" prefHeight="63.0" prefWidth="145.0" spacing="5.0">
-               <children>
-                  <ImageView fitHeight="42.0" fitWidth="33.0" layoutX="14.0" layoutY="41.0" onMouseClicked="#setRelatoriosAsSelectedLabel" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="icons8-report-card-96.png" />
-                     </image>
-                  </ImageView>
-                  <Label fx:id="lblRelatorios" layoutX="54.0" layoutY="49.0" onMouseClicked="#setRelatoriosAsSelectedLabel" prefHeight="33.0" prefWidth="89.0" text="Relatorios" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-         </children>
-      </HBox>
       <HBox alignment="CENTER" layoutX="754.0" layoutY="602.0" spacing="5.0">
          <children>
             <ImageView fitHeight="42.0" fitWidth="33.0" layoutX="14.0" layoutY="41.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
@@ -122,44 +62,6 @@
             </Label>
          </children>
       </HBox>
-      <Pane fx:id="sideTab" layoutX="147.0" layoutY="63.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="95.0" prefWidth="703.0" style="-fx-background-color: #fbb64f;">
-         <children>
-            <HBox alignment="CENTER" layoutX="75.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="74.0" prefWidth="553.0" spacing="70.0">
-               <children>
-                  <VBox fx:id="vBoxCliente" alignment="CENTER" layoutX="11.0" layoutY="222.0" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#selectCliente" prefHeight="73.0" prefWidth="71.0" style="-fx-padding: 5; -fx-background-insets: 5; -fx-border-insets: 5;">
-                     <children>
-                        <ImageView fitHeight="56.0" fitWidth="96.0" layoutX="11.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="icons8-sick-80.png" />
-                           </image>
-                        </ImageView>
-                        <Label text="Cliente" textFill="WHITE" />
-                     </children>
-                  </VBox>
-                  <VBox fx:id="vBoxMedico" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#selectMedico" prefHeight="73.0" prefWidth="76.0" style="-fx-padding: 5; -fx-background-insets: 5; -fx-border-insets: 5;">
-                     <children>
-                        <ImageView fitHeight="56.0" fitWidth="96.0" layoutX="11.0" layoutY="345.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="icons8-medical-doctor-80.png" />
-                           </image>
-                        </ImageView>
-                        <Label text="Médico" textFill="WHITE" />
-                     </children>
-                  </VBox>
-                  <VBox fx:id="vBoxUser" alignment="CENTER" layoutX="11.0" layoutY="99.0" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#selectUsuario" prefHeight="73.0" prefWidth="75.0" style="-fx-background-insets: 5; -fx-border-insets: 5; -fx-padding: 5;">
-                     <children>
-                        <ImageView fitHeight="56.0" fitWidth="96.0" layoutX="11.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="icons8-administrator-male-80.png" />
-                           </image>
-                        </ImageView>
-                        <Label alignment="BOTTOM_CENTER" text="Usuário" textFill="WHITE" />
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-         </children>
-      </Pane>
       <TableView fx:id="listClients" layoutX="154.0" layoutY="224.0" onMouseClicked="#doubleClickOnBirthDayClient" prefHeight="318.0" prefWidth="463.0" style="-fx-background-color: #ffddb2; -fx-border-color: #000000;">
         <columns>
           <TableColumn fx:id="nomeCliente" editable="false" prefWidth="240.0" resizable="false" text="Nome" />
@@ -212,5 +114,32 @@
             <Label fx:id="devMessage" layoutX="77.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" textFill="WHITE" />
          </children>
       </Pane>
+      <MenuBar layoutX="147.0" layoutY="2.0" prefHeight="25.0" prefWidth="349.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Adicionar">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#addClient" text="Cliente" />
+                  <MenuItem mnemonicParsing="false" onAction="#addMedico" text="Medico" />
+                  <MenuItem mnemonicParsing="false" onAction="#addUsuario" text="Usuario" />
+                  <MenuItem mnemonicParsing="false" onAction="#addConsulta" text="Consulta" />
+                  <MenuItem mnemonicParsing="false" onAction="#addProcedimento" text="Procedimento" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Visualizar">
+            <items>
+                  <MenuItem mnemonicParsing="false" text="Procedimento" />
+                  <MenuItem mnemonicParsing="false" text="Consulta" />
+                  <MenuItem mnemonicParsing="false" text="Usuario" />
+                  <MenuItem mnemonicParsing="false" text="Medico" />
+                  <MenuItem mnemonicParsing="false" text="Cliente" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#modificarPerfil" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
    </children>
 </AnchorPane>

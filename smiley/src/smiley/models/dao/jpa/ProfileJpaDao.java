@@ -63,4 +63,11 @@ public class ProfileJpaDao implements ProfileDao {
 		return profile;
 	}
 
+	@Override
+	public void update(Profile profile) {
+		entityManager.getTransaction().begin();
+		entityManager.merge(profile);
+		entityManager.getTransaction().commit();
+	}
+
 }

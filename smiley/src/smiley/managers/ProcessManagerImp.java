@@ -9,7 +9,6 @@ import smiley.models.dao.ProcedimentoDao;
 import smiley.models.dao.jpa.ConsultaJpaDao;
 import smiley.models.dao.jpa.EmpresaJpaDao;
 import smiley.models.dao.jpa.ProcedimentoJpaDao;
-import smiley.utils.SessionHelper;
 
 public class ProcessManagerImp implements ProcessManager {
 	

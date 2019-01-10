@@ -10,6 +10,7 @@ public interface ProfileDao {
 	Profile findbyID(Long id);
 	List<Profile> findProfiles();
 	Profile findByName(String name);
+	void update(Profile profile);
 	
 
 }

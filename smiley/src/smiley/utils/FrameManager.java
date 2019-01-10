@@ -1,18 +1,33 @@
 package smiley.utils;
 
+import java.io.IOException;
+
 import application.forms.ModifyClientController;
 import application.forms.ModifyMedicoController;
+import application.forms.ModifyProfileController;
 import application.forms.ModifyUserController;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import smiley.managers.DataManager;
+import smiley.managers.DataManagerImp;
 import smiley.models.Cliente;
 import smiley.models.Medico;
+import smiley.models.Profile;
+import smiley.models.Transaccao;
 import smiley.models.User;
 
 public class FrameManager {
+
+	// adds serao 100
+	// modifys serao 200
+	// views//300
+
+	DataManager dataManager = new DataManagerImp();
 
 	public void mainController() {
 		Stage primaryStage = new Stage();
@@ -27,32 +42,60 @@ public class FrameManager {
 			primaryStage.show();
 			primaryStage.setResizable(false);
 			primaryStage.setOnCloseRequest(e -> {
-		        Platform.exit();
-		        System.exit(0);
-		    });
+				Platform.exit();
+				System.exit(0);
+			});
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 	}
-
-	public void addClient() {
+	
+	public void mainController2() {
 		Stage primaryStage = new Stage();
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/application/forms/Add-Client.fxml"));
+			loader.setLocation(getClass().getResource("/application/views/Main2.fxml"));
 			loader.load();
 			Parent root = loader.getRoot();
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
+			primaryStage.setTitle("Brilho Dental");
+			primaryStage.getIcons().add(new Image("brilhodental.png"));
 			primaryStage.show();
 			primaryStage.setResizable(false);
-
+			primaryStage.setOnCloseRequest(e -> {
+				Platform.exit();
+				System.exit(0);
+			});
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 	}
+
+
+	private void load(String url) {
+		Stage primaryStage = new Stage();
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource(url));
+			loader.load();
+			Parent root = loader.getRoot();
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			primaryStage.setTitle("Smiley");
+			//primaryStage.getIcons().add(new Image("frelimo.jpg"));// change to brilho dental
+			primaryStage.show();
+			primaryStage.setResizable(false);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
 
 	public void login() {
 		Stage primaryStage = new Stage();
@@ -67,171 +110,90 @@ public class FrameManager {
 			primaryStage.show();
 			primaryStage.setResizable(false);
 			primaryStage.setOnCloseRequest(e -> {
-		        Platform.exit();
-		        System.exit(0);
-		    });
+				Platform.exit();
+				System.exit(0);
+			});
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 	}
 
-	public void searchMedico() {
-		Stage primaryStage = new Stage();
-		try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/application/views/View-Medico.fxml"));
-			loader.load();
-			Parent root = loader.getRoot();
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.show();
-			primaryStage.setResizable(false);
-		} catch (Exception e) {
-			e.printStackTrace();
+	public AnchorPane addProcedimento(User user) {
+		AnchorPane content = null;
+		if (user != null) {
+			Profile profile = user.getProfile();
+			Transaccao transaction = dataManager.findTransaccao(104l);
+			if (transaction.getProfiles().contains(profile))
+				content = loadContent(transaction.getUrl());
+			else
+				AlertUtils.alertSemPrivelegio();
 		}
-
+		return content;
 	}
 
-	public void searchCliente() {
-		Stage primaryStage = new Stage();
-		try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/application/views/View-Client.fxml"));
-			loader.load();
-			Parent root = loader.getRoot();
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.show();
-			primaryStage.setResizable(false);
-		} catch (Exception e) {
-			e.printStackTrace();
+	public AnchorPane viewProcedimentos(User user) {
+		AnchorPane content = null;
+		if (user != null) {
+			Profile profile = user.getProfile();
+			Transaccao transaction = dataManager.findTransaccao(304l);
+			if (transaction.getProfiles().contains(profile))
+				content = loadContent(transaction.getUrl());
+			else
+				AlertUtils.alertSemPrivelegio();
 		}
-
+		return content;
 	}
 
-	public void searchUsuario() {
-		Stage primaryStage = new Stage();
+	public AnchorPane loadContent(String url) {
+		AnchorPane content = null;
 		try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/application/views/View-User.fxml"));
-			loader.load();
-			Parent root = loader.getRoot();
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.setResizable(false);
-			primaryStage.show();
-		} catch (Exception e) {
-			e.printStackTrace();
+			content = (AnchorPane) FXMLLoader.load(getClass().getResource(url));
+		} catch (IOException exception) {
+			exception.printStackTrace();
 		}
-
+		return content;
 	}
 
-	public void addUser() {
-		Stage primaryStage = new Stage();
-		try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/application/forms/Add-User.fxml"));
-			loader.load();
-			Parent root = loader.getRoot();
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.show();
-			primaryStage.setResizable(false);
-		} catch (Exception e) {
-			e.printStackTrace();
+	public AnchorPane addClient(User user) {
+		AnchorPane content = null;
+		if (user != null) {
+			Profile profile = user.getProfile();
+			Transaccao transaction = dataManager.findTransaccao(104l);
+			if (transaction.getProfiles().contains(profile))
+				content = loadContent(transaction.getUrl());
+			else
+				AlertUtils.alertSemPrivelegio();
 		}
-
-	}
-
-	public void addMedico() {
-		Stage primaryStage = new Stage();
-		try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/application/forms/Add-Medico.fxml"));
-			loader.load();
-			Parent root = loader.getRoot();
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.show();
-			primaryStage.setResizable(false);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
-
-	public void modifyCliente(Cliente cliente) {
-		Stage primaryStage = new Stage();
-		try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/application/forms/Modify-Client.fxml"));
-			loader.load();
-			Parent root = loader.getRoot();
-			Scene scene = new Scene(root);
-			
-			if(cliente!=null) {
-				ModifyClientController mdf = loader.getController();
-				mdf.setCliente(cliente);
-			}
-			
-			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.show();
-			primaryStage.setResizable(false);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
-
-	public void modifyUser(User user) {
-		Stage primaryStage = new Stage();
-		try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/application/forms/Modify-User.fxml"));
-			loader.load();
-			Parent root = loader.getRoot();
-			Scene scene = new Scene(root);
-			if (user != null) {
-				ModifyUserController modifyUserController = loader.getController();
-				modifyUserController.setUser(user);
-			}
-			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.show();
-			primaryStage.setResizable(false);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		return content;
 		
 	}
 
-	public void modifyMedico(Medico medico) {
-		Stage primaryStage = new Stage();
-		try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/application/forms/Modify-Medico.fxml"));
-			loader.load();
-			Parent root = loader.getRoot();
-			Scene scene = new Scene(root);
-			if (medico != null) {
-				ModifyMedicoController modifyMedicoController = loader.getController();
-				modifyMedicoController.setMedico(medico);
-			}
-			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.show();
-			primaryStage.setResizable(false);
-		} catch (Exception e) {
-			e.printStackTrace();
+	public AnchorPane addMedico(User user) {
+		AnchorPane content = null;
+		if (user != null) {
+			Profile profile = user.getProfile();
+			Transaccao transaction = dataManager.findTransaccao(104l);
+			if (transaction.getProfiles().contains(profile))
+				content = loadContent(transaction.getUrl());
+			else
+				AlertUtils.alertSemPrivelegio();
 		}
+		return content;
 		
 	}
 
+	public AnchorPane addUser(User user) {
+		AnchorPane content = null;
+		if (user != null) {
+			Profile profile = user.getProfile();
+			Transaccao transaction = dataManager.findTransaccao(104l);
+			if (transaction.getProfiles().contains(profile))
+				content = loadContent(transaction.getUrl());
+			else
+				AlertUtils.alertSemPrivelegio();
+		}
+		return content;
+		
+	}
 }

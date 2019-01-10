@@ -112,9 +112,8 @@ public class ViewMedicoController implements Initializable {
 
 	@FXML
 	Hyperlink about;
-
-
-
+	
+	User user = dataManager.findCurrentUser();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -162,14 +161,14 @@ public class ViewMedicoController implements Initializable {
 	}
 
 	public void addMedico() {
-		frameManager.addMedico();
+		frameManager.addMedico(user);
 	}
 
 	public void modificarMedico() {
 		Medico medico = null;
 		medico = tableMedico.getSelectionModel().getSelectedItem();
 		if (medico != null) {
-			frameManager.modifyMedico(medico);
+			//frameManager.modifyMedico(medico,user);
 		} else {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Operação inválida");

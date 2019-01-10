@@ -118,6 +118,8 @@ public class ViewClientController implements Initializable {
 	DataManager dataManager = new DataManagerImp();
 
 	FrameManager frameManager = new FrameManager();
+	
+	User user = dataManager.findCurrentUser();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -166,14 +168,15 @@ public class ViewClientController implements Initializable {
 	}
 
 	public void addCliente() {
-		frameManager.addClient();
+		frameManager.addClient(dataManager.findCurrentUser());
 	}
 
 	public void modificarCliente() {
 		Cliente cliente = null;
 		cliente = tableCliente.getSelectionModel().getSelectedItem();
-		if (cliente != null) {
-			frameManager.modifyCliente(cliente);
+		if (cliente != null && user!=null) {
+			//frameManager.modifyCliente(cliente, user);
+			System.out.println();
 		} else {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Operação inválida");

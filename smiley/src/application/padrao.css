@@ -1,0 +1,65 @@
+* {
+	-fx-primary: #ea9400;
+	-fx-secondary: #ffffff;
+	-fx-primarytext: #ea9400;
+}
+
+.root {
+	-fx-background-color: -fx-secondary;
+}
+
+.button {
+	-fx-text-fill: -fx-primarytext;
+	-fx-border-color: -fx-primary;
+	-fx-background-color: -fx-secondary;
+	-fx-border-radius:20px;
+	-fx-background-radius:20px;	
+}
+
+.button:hover{
+	-fx-background-color: -fx-primary;
+	-fx-text-fill: -fx-secondary;
+	
+}
+
+.text-field {
+	-fx-text-fill: -fx-primary;
+	-jfx-focus-color: -fx-primary;
+	-fx-font-size: 14pt;
+}
+
+.table-view .column-header,
+.table-view .column-header .filler,
+.table-view .column-header-background .filler {   
+    -fx-background-color:  #fbb64f;
+    -fx-stroke: transparent;
+    -fx-size:50;
+    -fx-alignment: CENTER ;    
+    -fx-text-alignment: center;
+    -fx-text-fill: white;
+
+}
+.table-row-cell:filled:hover {
+
+    -fx-size:50;
+    -fx-alignment: CENTER;
+    -fx-text-alignment: center;
+
+
+}
+.table-view:row-selection {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-fixed-cell-size: 50;
+    -fx-alignment: CENTER;
+    -fx-text-alignment: center;
+
+}
+
+.table-view .table-column{
+    -fx-text-alignment: center;
+    -fx-alignment: CENTER 
+
+}
+
+

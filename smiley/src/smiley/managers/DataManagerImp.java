@@ -13,6 +13,7 @@ import smiley.models.Medico;
 import smiley.models.Procedimento;
 import smiley.models.Profile;
 import smiley.models.Sexo;
+import smiley.models.Transaccao;
 import smiley.models.User;
 import smiley.models.dao.ClienteDao;
 import smiley.models.dao.ConsultaDao;
@@ -20,6 +21,7 @@ import smiley.models.dao.MedicoDao;
 import smiley.models.dao.ProcedimentoDao;
 import smiley.models.dao.ProfileDao;
 import smiley.models.dao.SessionHelperDao;
+import smiley.models.dao.TransaccaoDao;
 import smiley.models.dao.UserDao;
 import smiley.models.dao.jpa.ClienteJpaDao;
 import smiley.models.dao.jpa.ConsultaJpaDao;
@@ -27,6 +29,7 @@ import smiley.models.dao.jpa.MedicoJpaDao;
 import smiley.models.dao.jpa.ProcedimentoJpaDao;
 import smiley.models.dao.jpa.ProfileJpaDao;
 import smiley.models.dao.jpa.SessionHelperJpaDao;
+import smiley.models.dao.jpa.TransaccaoJpaDao;
 import smiley.models.dao.jpa.UserJpaDao;
 import smiley.utils.ProtectedConfigFile;
 
@@ -39,6 +42,7 @@ public class DataManagerImp implements DataManager {
 	MedicoDao medicoDao = new MedicoJpaDao();
 	ConsultaDao consultadao = new ConsultaJpaDao();
 	ProcedimentoDao procedimentoDao = new ProcedimentoJpaDao();
+	TransaccaoDao transaccaoDao = new TransaccaoJpaDao();
 
 	@Override
 	public void createUser(User user) throws UnsupportedEncodingException, GeneralSecurityException {
@@ -195,6 +199,23 @@ public class DataManagerImp implements DataManager {
 	public void createProcedimento(Procedimento procedimento) {
 		if(procedimento!=null)
 			procedimentoDao.create(procedimento);
+		
+	}
+
+	@Override
+	public Transaccao findTransaccao(Long code) {
+		return transaccaoDao.find(code);
+	}
+
+	@Override
+	public List<Transaccao> findAllTransaccoes() {
+		return transaccaoDao.find();
+	}
+
+	@Override
+	public void updateProfile(Profile profile) {
+		if(profile!=null)
+			profileDao.update(profile);
 		
 	}
 }

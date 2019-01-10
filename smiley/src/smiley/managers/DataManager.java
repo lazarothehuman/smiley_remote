@@ -12,6 +12,7 @@ import smiley.models.Medico;
 import smiley.models.Procedimento;
 import smiley.models.Profile;
 import smiley.models.Sexo;
+import smiley.models.Transaccao;
 import smiley.models.User;
 
 public interface DataManager {
@@ -41,5 +42,8 @@ public interface DataManager {
 	public User findUser(long id);
 	public void createConsulta(Consulta consulta);
 	public void createProcedimento(Procedimento procedimento);
+	public Transaccao findTransaccao(Long code);
+	public List<Transaccao> findAllTransaccoes();
+	public void updateProfile(Profile profile);
 
 }

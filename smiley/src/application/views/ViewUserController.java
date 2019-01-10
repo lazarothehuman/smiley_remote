@@ -136,7 +136,7 @@ public class ViewUserController implements Initializable {
 		User user = dataManager.findCurrentUser();
 		if (user != null) {
 			if (user.getProfile().getId() == 1l || user.getProfile().getId() == 2l)
-				frameManager.addUser();
+				frameManager.addUser(user);
 			else {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setHeaderText(null);
@@ -157,7 +157,8 @@ public class ViewUserController implements Initializable {
 		if (user != null) {
 			if (user.getProfile().getId() == 1l || user.getProfile().getId() == 2l) {
 				if (selectedUser != null)
-					frameManager.modifyUser(selectedUser);
+					System.out.println();
+					//frameManager.modifyUser(selectedUser,dataManager.findCurrentUser());
 				else {
 					Alert alert = new Alert(AlertType.ERROR);
 					alert.setTitle("Operação inválida");

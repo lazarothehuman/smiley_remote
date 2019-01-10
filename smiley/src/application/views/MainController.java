@@ -13,12 +13,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -26,10 +28,13 @@ import javafx.stage.Stage;
 import smiley.managers.DataManager;
 import smiley.managers.DataManagerImp;
 import smiley.models.Cliente;
+import smiley.models.Profile;
 import smiley.models.User;
+import smiley.utils.AlertUtils;
 import smiley.utils.FrameManager;
+import smiley.utils.SessionHelper;
 
-public class MainController implements Initializable {
+public class MainController  {
 
 	/**
 	 * Este e' o maincontroller. Fase 1- 08/03, falta lblConsultasDiarias e
@@ -38,24 +43,7 @@ public class MainController implements Initializable {
 
 	@FXML
 	Pane mainTab;
-	@FXML
-	Pane sideTab;
-	@FXML
-	VBox vBoxCliente;
-	@FXML
-	VBox vBoxUser;
-	@FXML
-	VBox vBoxMedico;
-	@FXML
-	HBox vBoxRelatorios;
-	@FXML
-	HBox vBoxRegistro;
-	@FXML
-	HBox vBoxProcura;
-	@FXML
-	VBox vBoxAdd;
-	@FXML
-	HBox vBoxMarcacao;
+
 	@FXML
 	Label lblGreetings = new Label();
 	@FXML
@@ -93,27 +81,26 @@ public class MainController implements Initializable {
 	ImageView add;
 	@FXML
 	ImageView closing;
+	
+	@FXML
+	BorderPane mainStage;
 
 	FrameManager frameManagers = new FrameManager();
 
 	DataManager dataManager = new DataManagerImp();
 
 	User user = dataManager.findCurrentUser();
-
+/*
 	public void addClient() {
 		if (user != null)
-			frameManagers.addClient();
-		else {
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setHeaderText(null);
-			alert.setTitle("Erro de permissão");
-			alert.setContentText("O usuário corrente não tem permissão para adicionar a tarefa em causa");
-			alert.showAndWait();
-		}
+			frameManagers.addClient(user);
+		else
+			AlertUtils.alertSemPrivelegio();
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		//mainStage.setCenter(value);
 		Date date = new Date();
 		nomeCliente.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nome"));
 		dataNascimento.setCellValueFactory(new PropertyValueFactory<Cliente, String>("dataNascimento"));
@@ -175,62 +162,7 @@ public class MainController implements Initializable {
 
 			}
 		});
-		vBoxAdd.setOnMouseEntered(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				vBoxAdd.setStyle("-fx-background-color:#fbb64f;");
-			}
-		});
-
-		vBoxAdd.setOnMouseExited(new EventHandler<MouseEvent>() {
-
-			@Override
-			public void handle(MouseEvent event) {
-				vBoxAdd.setStyle("");
-
-			}
-		});
-
-		vBoxCliente.setOnMouseEntered(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				vBoxCliente.setStyle("-fx-background-color:#ea9400;");
-			}
-		});
-		vBoxCliente.setOnMouseExited(new EventHandler<MouseEvent>() {
-
-			@Override
-			public void handle(MouseEvent event) {
-				vBoxCliente.setStyle("");
-			}
-		});
-
-		vBoxMedico.setOnMouseEntered(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				vBoxMedico.setStyle("-fx-background-color:#ea9400;");
-			}
-		});
-		vBoxMedico.setOnMouseExited(new EventHandler<MouseEvent>() {
-
-			@Override
-			public void handle(MouseEvent event) {
-				vBoxMedico.setStyle("");
-			}
-		});
-		vBoxUser.setOnMouseEntered(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				vBoxUser.setStyle("-fx-background-color:#ea9400;");
-			}
-		});
-		vBoxUser.setOnMouseExited(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				vBoxUser.setStyle("");
-			}
-		});
-
+		
 	}
 
 	public void logout() {
@@ -258,50 +190,7 @@ public class MainController implements Initializable {
 		alert.setContentText("A função que está a tentar executar ainda não está disponível mas brevemente estará!");
 		alert.setHeaderText(null);
 		alert.showAndWait();
-		clearStyles();
-	}
-
-	private void clearStyles() {
-		vBoxRegistro.setStyle("");
-		vBoxProcura.setStyle("");
-		vBoxRelatorios.setStyle("");
-		vBoxMarcacao.setStyle("");
-
-	}
-
-	public void setRegistroAsSelectedLabel() {
-		selectedLabel = lblRegistro;
-		vBoxRegistro.setStyle("-fx-background-color: #fbb64f;");
-		vBoxProcura.setStyle("");
-		vBoxRelatorios.setStyle("");
-		vBoxMarcacao.setStyle("");
-	}
-
-	public void setProcuraAsSelectedLabel() {
-		selectedLabel = lblProcura;
-		vBoxProcura.setStyle("-fx-background-color:#fbb64f;");
-		vBoxRelatorios.setStyle("");
-		vBoxMarcacao.setStyle("");
-		vBoxRegistro.setStyle("");
-
-	}
-
-	public void setRelatoriosAsSelectedLabel() {
-		selectedLabel = lblRelatorios;
-		vBoxRelatorios.setStyle("-fx-background-color:#fbb64f;");
-		vBoxProcura.setStyle("");
-		vBoxRegistro.setStyle("");
-		vBoxMarcacao.setStyle("");
-		unavailable();
-	}
-
-	public void setMarcacaoAsSelectedLabel() {
-		selectedLabel = lblMarcacao;
-		vBoxMarcacao.setStyle("-fx-background-color:#fbb64f;");
-		vBoxProcura.setStyle("");
-		vBoxRegistro.setStyle("");
-		vBoxRelatorios.setStyle("");
-		unavailable();
+		//clearStyles();
 	}
 
 	public void marcar() {
@@ -344,19 +233,16 @@ public class MainController implements Initializable {
 
 	}
 
-	private void addUsuario() {
-		if (user != null) {
-			if (user.getProfile().getId() != 3)
-				frameManagers.addUser();
-			else {
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle("Acção bloqueada");
-				alert.setContentText("A operação que tenta executar não é permitida");
-				alert.setHeaderText(null);
-				alert.showAndWait();
-			}
+	public void addUsuario() {
+		if (user != null)
+			frameManagers.addUser(user);
+		else {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Acção bloqueada");
+			alert.setContentText("A operação que tenta executar não é permitida");
+			alert.setHeaderText(null);
+			alert.showAndWait();
 		}
-
 	}
 
 	public void selectMedico() {
@@ -368,13 +254,21 @@ public class MainController implements Initializable {
 		}
 	}
 
-	private void addMedico() {
-		frameManagers.addMedico();
+	public void addMedico() {
+		frameManagers.addMedico(user);
+	}
+
+	public void addProcedimento() {
+		frameManagers.addProcedimento(user);
+	}
+
+	public void addConsulta() {
+		frameManagers.addConsulta(user);
 	}
 
 	public void selectCliente() {
 		if (selectedLabel == lblRegistro)
-			frameManagers.addClient();
+			frameManagers.addClient(user);
 		else {
 			if (selectedLabel == lblProcura)
 				procura("cliente");
@@ -416,8 +310,25 @@ public class MainController implements Initializable {
 			alert.showAndWait();
 		}
 	}
+	
+	public void modificarPerfil() {
+		List<Profile> profiles = dataManager.findProfiles(true);
+		ChoiceDialog<Profile> dialog = new ChoiceDialog<>(profiles.get(0), profiles);
+		dialog.setTitle("Choice Dialog");
+		dialog.setHeaderText("Look, a Choice Dialog");
+		dialog.setContentText("Choose your letter:");
+
+		// Traditional way to get the response value.
+		Optional<Profile> result = dialog.showAndWait();
+		if (result.isPresent()){
+		    if(result.get()!=null) {
+		    	frameManagers.modifyProfile(result.get(), user);
+		    }
+		}
+	}
 
 	public String version() {
 		return "Smiley, produzido pela Human's solutions, versão 1.0";
 	}
+}*/
 }

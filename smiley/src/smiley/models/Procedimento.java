@@ -19,7 +19,7 @@ public class Procedimento {
 	@Column(nullable=false)
 	private Double valor;
 	
-	@Column(nullable=false)
+	@Column(nullable=false, unique=true)
 	private String codigo;
 	
 	@Column(nullable=false, columnDefinition="bit")

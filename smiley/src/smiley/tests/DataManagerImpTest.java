@@ -1,8 +1,5 @@
 package smiley.tests;
 
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.Date;
 import java.util.List;
 
@@ -14,40 +11,65 @@ import smiley.managers.DataManagerImp;
 import smiley.models.Cliente;
 import smiley.models.Encarregado;
 import smiley.models.Medico;
+import smiley.models.Profile;
 import smiley.models.Sexo;
+import smiley.models.Transaccao;
 import smiley.models.User;
 
 public class DataManagerImpTest {
 	
 	DataManager dataManager = new DataManagerImp();
 	
-	@Test
-	public void createUserTest() {
-		//User user = new User();
-		
-	}
-	
-	@Test
-	public void sendSmsNotification()
-			throws Exception {
-		String phoneNumber = "258825004957";
-		String message = "Pagar qoutas";
-		//String urlR =  "https://platform.clickatell.com/messages/http/send?apiKey=wnHp1m9YTVuCacD9T71ZDQ==&to=258825004957&content=Pagar quotas";
-		String requestUrl = "http://api.clickatell.com/http/sendmsg?user="
-				+ "edrisse" + "&password=" + "DUHMTXFcaDBFdP" + "&api_id="
-				+ "3592269" + "&to=" + URLEncoder.encode(phoneNumber, "UTF-8")
-				+ "&text=" + URLEncoder.encode(message, "UTF-8");
-		//System.out.println(phoneNumber + ", " + message);
-		URL url = new URL(requestUrl);
-		HttpURLConnection uc = (HttpURLConnection) url.openConnection();
-		uc.getResponseMessage();
-		uc.disconnect();
-	}
 
-	
-	public void createProfileTest() {
+	@Test
+	public void createTransactionTest() {
+		Profile profile = dataManager.findProfile(1l);
+		Transaccao transaccao = new Transaccao();
+		transaccao.setActive(true);
+		transaccao.setUrl("/application/forms/Modify-Profile.fxml");
+		transaccao.setCode(204l);
+		transaccao.addProfile(profile);
+		profile.addTransaction(transaccao);
+		dataManager.updateProfile(profile);
+		Assert.assertNotNull(transaccao.getId());
 		
+
 	}
+	
+	@Test
+	public void insertTransactionIntoProfileTest() {
+		Profile profile = dataManager.findProfile(1l);
+		Transaccao transaccao = dataManager.findTransaccao(102l);
+		if(profile!=null && transaccao!=null) {
+			profile.addTransaction(transaccao);
+			transaccao.addProfile(profile);
+			dataManager.updateProfile(profile);
+		}
+		//Assert.assertNotNull(profile);
+		//Assert.assertNotNull(transaccao);
+		Assert.assertEquals(2, transaccao.getProfiles().size());
+	}
+	
+	@Test
+	public void findAllTransaccoes() {
+		List<Transaccao> transaccoes = dataManager.findAllTransaccoes();
+		Assert.assertNotNull(transaccoes);
+		Assert.assertFalse(transaccoes.isEmpty());
+		Assert.assertEquals(9, transaccoes.size());
+	}
+	
+	@Test
+	public void insertAllTransactionIntoProfileTest() {
+		Profile profile = dataManager.findProfile(2l);
+		List<Transaccao> transaccoes = dataManager.findAllTransaccoes();
+		for (Transaccao transaccao : transaccoes) {
+			profile.addTransaction(transaccao);
+			transaccao.addProfile(profile);
+		}
+		dataManager.updateProfile(profile);
+		Assert.assertEquals(9, profile.getTransaccoes().size());
+	}
+	
 	
 	@Test
 	public void createMedicoTest() {
