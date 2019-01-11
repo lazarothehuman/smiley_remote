@@ -1,5 +1,7 @@
 package smiley.managers;
 
+import java.util.List;
+
 import smiley.models.Consulta;
 import smiley.models.Empresa;
 import smiley.models.Procedimento;
@@ -38,6 +40,11 @@ public class ProcessManagerImp implements ProcessManager {
 		if(empresa!=null)
 			empresaDao.create(empresa);
 
+	}
+
+	@Override
+	public List<Procedimento> findProcedimentos(Long id,String nome, String codigo, Boolean active) {
+		return procedimentoDao.find(id,nome,codigo,active);
 	}
 
 }

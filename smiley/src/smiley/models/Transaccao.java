@@ -9,9 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.Transient;
 
-import javafx.scene.control.CheckBox;
 
 
 @Entity
@@ -33,8 +31,7 @@ public class Transaccao {
 	@Column(nullable =false, columnDefinition = "bit")
 	private Boolean active = true;
 	
-	@Transient
-	CheckBox select = new CheckBox();
+	
 	
 	public Long getId() {
 		return id;
@@ -77,9 +74,7 @@ public class Transaccao {
 		return this.profiles;
 	}
 	
-	public CheckBox getSelect() {
-		return select;
-	}
+	
 	
 
 }
