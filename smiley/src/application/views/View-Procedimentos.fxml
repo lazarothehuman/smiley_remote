@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.ViewProcedimentosController">
+<AnchorPane fx:id="ContentPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.ViewProcedimentosController">
    <children>
       <SplitPane dividerPositions="0.06446991404011461" layoutX="169.0" layoutY="28.0" orientation="VERTICAL" prefHeight="700.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -49,9 +49,9 @@
                   </VBox>
                   <HBox layoutX="21.0" layoutY="590.0" spacing="7.0" style="-fx-padding: 5; -fx-background-insets: 5; -fx-border-insets: 5;">
                      <children>
-                        <JFXButton fx:id="adicionarCliente" layoutX="34.0" layoutY="472.0" style="-fx-background-color: #ea9400;" text="Adicionar novo procedimento" textFill="WHITE" />
-                        <JFXButton fx:id="modificarCliente" layoutX="184.0" layoutY="472.0" style="-fx-background-color: #ea9400;" text="Modificar procedimento" textFill="WHITE" />
-                        <JFXButton fx:id="removerCliente" layoutX="306.0" layoutY="472.0" style="-fx-background-color: #ea9400;" text="Remover procedimento" textFill="WHITE" />
+                        <JFXButton layoutX="34.0" layoutY="472.0" onAction="#addProcedimento" style="-fx-background-color: #ea9400;" text="Adicionar novo procedimento" textFill="WHITE" />
+                        <JFXButton layoutX="184.0" layoutY="472.0" style="-fx-background-color: #ea9400;" text="Modificar procedimento" textFill="WHITE" />
+                        <JFXButton layoutX="306.0" layoutY="472.0" onAction="#remover" style="-fx-background-color: #ea9400;" text="Remover procedimento" textFill="WHITE" />
                      </children>
                   </HBox>
                   <Label layoutX="697.0" layoutY="599.0" text="Total de itens na procura:">

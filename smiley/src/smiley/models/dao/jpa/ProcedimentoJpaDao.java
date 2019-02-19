@@ -25,6 +25,13 @@ public class ProcedimentoJpaDao implements ProcedimentoDao {
 		entityManager.persist(procedimento);
 		entityManager.getTransaction().commit();
 	}
+	
+	@Override
+	public void update(Procedimento procedimento) {
+		entityManager.getTransaction().begin();
+		entityManager.merge(procedimento);
+		entityManager.getTransaction().commit();
+	}
 
 	@Override
 	public List<Procedimento> find(Long id, String nome, String codigo, Boolean active) {

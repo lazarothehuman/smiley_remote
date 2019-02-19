@@ -47,4 +47,12 @@ public class ProcessManagerImp implements ProcessManager {
 		return procedimentoDao.find(id,nome,codigo,active);
 	}
 
+	@Override
+	public void updateProcedimento(Procedimento procedimento) {
+		if (procedimento != null) {
+			procedimentoDao.update(procedimento);
+		}
+		
+	}
+
 }

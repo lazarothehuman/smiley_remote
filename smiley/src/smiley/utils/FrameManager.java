@@ -17,6 +17,7 @@ import smiley.managers.DataManager;
 import smiley.managers.DataManagerImp;
 import smiley.models.Cliente;
 import smiley.models.Medico;
+import smiley.models.Procedimento;
 import smiley.models.Profile;
 import smiley.models.Transaccao;
 import smiley.models.User;
@@ -184,6 +185,20 @@ public class FrameManager {
 	}
 
 	public AnchorPane addUser(User user) {
+		AnchorPane content = null;
+		if (user != null) {
+			Profile profile = user.getProfile();
+			Transaccao transaction = dataManager.findTransaccao(104l);
+			if (transaction.getProfiles().contains(profile))
+				content = loadContent(transaction.getUrl());
+			else
+				AlertUtils.alertSemPrivelegio();
+		}
+		return content;
+		
+	}
+
+	public AnchorPane modifyProcedimento(Procedimento selectedProcedimento, User user) {
 		AnchorPane content = null;
 		if (user != null) {
 			Profile profile = user.getProfile();

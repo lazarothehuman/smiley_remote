@@ -10,4 +10,6 @@ public interface ProcedimentoDao {
 
 	List<Procedimento> find(Long id, String nome, String codigo, Boolean active);
 
+	void update(Procedimento procedimento);
+
 }

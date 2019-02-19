@@ -12,5 +12,6 @@ public interface ProcessManager {
 	public void createProcedimento(Procedimento procedimento);
 	public void createEmpresa(Empresa empresa);
 	public List<Procedimento> findProcedimentos(Long id, String nome, String codigo, Boolean active);
+	public void updateProcedimento(Procedimento procedimento);
 
 }
