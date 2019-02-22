@@ -26,8 +26,8 @@ public class DataManagerImpTest {
 		Profile profile = dataManager.findProfile(1l);
 		Transaccao transaccao = new Transaccao();
 		transaccao.setActive(true);
-		transaccao.setUrl("/application/forms/Modify-Profile.fxml");
-		transaccao.setCode(204l);
+		transaccao.setUrl("/application/views/View-Clients.fxml");
+		transaccao.setCode(301l);
 		transaccao.addProfile(profile);
 		profile.addTransaction(transaccao);
 		dataManager.updateProfile(profile);

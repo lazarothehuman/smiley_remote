@@ -30,6 +30,9 @@ public class MainController2 implements Initializable {
 
 	@FXML
 	Button userBtn;
+	
+	@FXML
+	Button clienteBtn;
 
 	@FXML
 	Button settingsButton;
@@ -80,6 +83,24 @@ public class MainController2 implements Initializable {
 			}
 		});
 		procedimentosBtn.setContextMenu(contexMenuProcedimento);
+		
+		MenuItem addCliente = new MenuItem("Adicionar cliente");
+		MenuItem viewClientes = new MenuItem("Visualizar todos clientes");
+		final ContextMenu contextMenuCliente = new ContextMenu();
+		contextMenuCliente.getItems().addAll(addCliente, viewClientes);
+		addCliente.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				addCliente();
+			}
+		});
+		viewClientes.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				viewCliente();
+			}
+		});
+		clienteBtn.setContextMenu(contextMenuCliente);
 /*
 		MenuItem addUser = new MenuItem("Adicionar usuário");
 		MenuItem viewUser = new MenuItem("Visualizar todos usuários");
@@ -157,21 +178,18 @@ public class MainController2 implements Initializable {
 		AnchorPane content = frameManager.addConsulta(user);
 		setContent(content);
 	}
-/*
+
 	public void addCliente() {
 		AnchorPane content = frameManager.addCliente(user);
 		setContent(content);
 	}
 
 	public void viewCliente() {
-		AnchorPane content = frameManager.viewCliente(user);
+		AnchorPane content = frameManager.viewClientes(user);
 		setContent(content);
 	}
 
-	public void addConsulta() {
-		AnchorPane content = frameManager.addConsulta(user);
-		setContent(content);
-	}*/
+
 
 	public void setContent(AnchorPane content) {
 		if (content != null) {

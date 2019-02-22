@@ -63,7 +63,7 @@
       								</ImageView>
       							</graphic>
       						</JFXButton>
-      						<JFXButton alignment="TOP_LEFT" layoutX="14.0" layoutY="314.0" prefHeight="39.0" prefWidth="266.0" style="-fx-background-color: #ff9346;" styleClass="buttonMenu" stylesheets="estilos.css" text="Clientes" textFill="WHITE">
+      						<JFXButton fx:id="clienteBtn" alignment="TOP_LEFT" layoutX="14.0" layoutY="314.0" prefHeight="39.0" prefWidth="266.0" style="-fx-background-color: #ff9346;" styleClass="buttonMenu" stylesheets="estilos.css" text="Clientes" textFill="WHITE">
       							<graphic>
       								<ImageView fitHeight="22.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
       									<image>

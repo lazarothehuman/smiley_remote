@@ -8,13 +8,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane onKeyPressed="#enterKeyPressed" prefHeight="600.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.ViewClientController">
+<AnchorPane onKeyPressed="#enterKeyPressed" prefHeight="800.0" prefWidth="700.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.ViewClientController">
    <children>
-      <SplitPane dividerPositions="0.14046822742474915" layoutX="169.0" layoutY="28.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.14046822742474915" layoutX="169.0" layoutY="28.0" orientation="VERTICAL" prefHeight="800.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="27.0" prefWidth="1129.0" style="-fx-background-color: #000000;">
                <children>
-                  <Label alignment="TOP_CENTER" layoutY="6.0" prefHeight="81.0" prefWidth="1400.0" style="-fx-background-color: #ea9400;" text=" Visualizar Cliente" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Label alignment="TOP_CENTER" layoutY="6.0" prefHeight="81.0" prefWidth="700.0" style="-fx-background-color: #ea9400;" text=" Visualizar Cliente" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
                         <Font size="30.0" />
                      </font></Label>
@@ -35,7 +35,7 @@
                </children></AnchorPane>
           <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="1400.0" style="-fx-background-color: #ffffff;">
                <children>
-                  <TableView fx:id="tableCliente" layoutX="113.0" layoutY="95.0" onMouseClicked="#doubleClickOnClient" prefHeight="465.0" prefWidth="1058.0" style="-fx-border-width: 2; -fx-border-color: #000000;" stylesheets="@../padrao.css" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="tableCliente" layoutX="113.0" layoutY="95.0" onMouseClicked="#doubleClickOnClient" prefHeight="465.0" prefWidth="700.0" style="-fx-border-width: 2; -fx-border-color: #000000;" stylesheets="@../padrao.css" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="0.0">
                     <columns>
                       <TableColumn fx:id="nomeColumn" prefWidth="220.0" text="Nome" />
                       <TableColumn fx:id="dataColumn" prefWidth="175.0" text="Data de nascimento" />
