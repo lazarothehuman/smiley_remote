@@ -5,6 +5,7 @@ import java.util.List;
 import smiley.models.Consulta;
 import smiley.models.Empresa;
 import smiley.models.Procedimento;
+import smiley.models.ProcedimentoConsulta;
 import smiley.models.dao.ConsultaDao;
 import smiley.models.dao.EmpresaDao;
 import smiley.models.dao.ProcedimentoDao;
@@ -21,8 +22,12 @@ public class ProcessManagerImp implements ProcessManager {
 
 	@Override
 	public void createConsulta(Consulta consulta) {
+		Double custoTotal = 0d;
 		if(consulta!=null) {
 			consulta.setUser(dataManager.findCurrentUser());
+			for (ProcedimentoConsulta element : consulta.getProcedimentosConsulta()) 
+				custoTotal += element.getProcedimento().getValor()*element.getQuantidade();
+			consulta.setCustoTotal(custoTotal);
 			consultaDao.create(consulta);
 		}
 

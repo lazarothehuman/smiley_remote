@@ -152,6 +152,11 @@ public class MainController2 implements Initializable {
 		AnchorPane content = frameManager.addProcedimento(user);
 		setContent(content);
 	}
+	
+	public void addConsulta() {
+		AnchorPane content = frameManager.addConsulta(user);
+		setContent(content);
+	}
 /*
 	public void addCliente() {
 		AnchorPane content = frameManager.addCliente(user);

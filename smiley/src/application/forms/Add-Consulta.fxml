@@ -10,40 +10,40 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: #ffffff;" stylesheets="@../../../resources/padrao.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.forms.AddProcedimentoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: #ffffff;" stylesheets="@../padrao.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.forms.AddConsultaController">
    <children>
       <Label alignment="CENTER" prefHeight="106.0" prefWidth="700.0" style="-fx-background-color: #ea9400;" text="ADICIONAR CONSULTA" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="200.0" layoutY="665.0" mnemonicParsing="false" onAction="#gravar" prefHeight="41.0" prefWidth="69.0" text="Gravar" />
+      <Button layoutX="200.0" layoutY="665.0" mnemonicParsing="false" onAction="#addConsulta" prefHeight="41.0" prefWidth="69.0" text="Gravar" />
       <HBox alignment="CENTER" layoutX="22.0" layoutY="128.0" spacing="30.0">
          <children>
             <Label layoutX="58.0" layoutY="134.0" text="Medico:" />
-            <JFXComboBox layoutX="146.0" layoutY="130.0" prefHeight="25.0" prefWidth="126.0" />
+            <JFXComboBox fx:id="medicoCombo" layoutX="146.0" layoutY="130.0" prefHeight="25.0" prefWidth="126.0" />
             <Label layoutX="316.0" layoutY="134.0" text="Data realização:" />
-            <DatePicker layoutX="410.0" layoutY="130.0" />
+            <DatePicker fx:id="dataRealizacao" layoutX="410.0" layoutY="130.0" />
             <Label layoutX="716.0" layoutY="143.0" text="Nome do paciente:" />
-            <JFXComboBox layoutX="861.0" layoutY="139.0" prefHeight="25.0" prefWidth="147.0" />
+            <JFXComboBox fx:id="clienteCombo" layoutX="861.0" layoutY="139.0" prefHeight="25.0" prefWidth="147.0" />
          </children>
       </HBox>
-      <TableView layoutX="22.0" layoutY="271.0" prefHeight="356.0" prefWidth="958.0">
+      <TableView fx:id="tableProcedimentos" layoutX="22.0" layoutY="271.0" prefHeight="356.0" prefWidth="958.0" stylesheets="@../../../resources/padrao.css">
         <columns>
-          <TableColumn prefWidth="75.0" text="Quantidade" />
-          <TableColumn prefWidth="208.0" text="Procedimento" />
-            <TableColumn prefWidth="208.0" text="Valor Unitario" />
-            <TableColumn prefWidth="208.0" text="Valor Total" />
+          <TableColumn fx:id="quantidadeColumn" prefWidth="113.0" text="Quantidade" />
+          <TableColumn fx:id="nameColumn" prefWidth="298.0" text="Procedimento" />
+            <TableColumn fx:id="valorColumn" prefWidth="248.0" text="Valor Unitario" />
+            <TableColumn fx:id="valorTotalColumn" prefWidth="296.0" text="Valor Total" />
         </columns>
       </TableView>
       <HBox alignment="CENTER" layoutX="22.0" layoutY="193.0" spacing="30.0">
          <children>
             <Label layoutX="66.0" layoutY="204.0" text="Procedimento" />
-            <JFXComboBox layoutX="174.0" layoutY="200.0" prefHeight="25.0" prefWidth="101.0" />
-            <TextField layoutX="285.0" layoutY="192.0" prefHeight="30.0" prefWidth="147.0" promptText="Quantidade" />
-            <Button layoutX="447.0" layoutY="199.0" mnemonicParsing="false" text="Adicionar" />
+            <JFXComboBox fx:id="procedimentoCombo" layoutX="174.0" layoutY="200.0" prefHeight="25.0" prefWidth="101.0" />
+            <TextField fx:id="quantidadeTf" layoutX="285.0" layoutY="192.0" prefHeight="30.0" prefWidth="147.0" promptText="Quantidade" />
+            <Button layoutX="447.0" layoutY="199.0" mnemonicParsing="false" onAction="#adicionarProcedimento" text="Adicionar" />
          </children>
       </HBox>
-      <Button layoutX="22.0" layoutY="638.0" mnemonicParsing="false" text="Remover" />
+      <Button layoutX="22.0" layoutY="638.0" mnemonicParsing="false" onAction="#remove" text="Remover" />
    </children>
 </AnchorPane>

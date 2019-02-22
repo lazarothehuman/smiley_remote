@@ -211,4 +211,17 @@ public class FrameManager {
 		return content;
 		
 	}
+
+	public AnchorPane addConsulta(User user) {
+		AnchorPane content = null;
+		if (user != null) {
+			Profile profile = user.getProfile();
+			Transaccao transaction = dataManager.findTransaccao(105l);
+			if (transaction.getProfiles().contains(profile))
+				content = loadContent(transaction.getUrl());
+			else
+				AlertUtils.alertSemPrivelegio();
+		}
+		return content;
+	}
 }

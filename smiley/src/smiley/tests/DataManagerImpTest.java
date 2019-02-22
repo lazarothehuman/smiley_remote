@@ -73,15 +73,15 @@ public class DataManagerImpTest {
 	
 	@Test
 	public void createMedicoTest() {
-		/*Medico medico = new Medico();
-		medico.setName("Candinha");
+		Medico medico = new Medico();
+		medico.setName("Tania");
 		medico.setDataNascimento(new Date());
 		medico.setSexo(Sexo.FEMININO);
 		medico.setTelefone(null);
 		medico.setEmail(null);
 		medico.setActive(true);
 		dataManager.createMedico(medico);
-		Assert.assertNotNull(medico.getId());*/
+		Assert.assertNotNull(medico.getId());
 		
 	}
 	

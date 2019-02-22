@@ -18,6 +18,7 @@
 		<class>smiley.models.Empresa</class>
 		<class>smiley.models.Consulta</class>
 		<class>smiley.models.Transaccao</class>
+		<class>smiley.models.ProcedimentoConsulta</class>
 		<properties>
 			<!-- Propriedades JDBC -->
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

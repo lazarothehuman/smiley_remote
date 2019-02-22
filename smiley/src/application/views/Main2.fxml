@@ -45,7 +45,7 @@
       								<Insets bottom="5.0" />
       							</padding>
       						</Label>
-      						<JFXButton alignment="TOP_LEFT" layoutX="15.0" layoutY="236.0" prefHeight="39.0" prefWidth="266.0" style="-fx-background-color: #ff9346;" styleClass="buttonMenu" stylesheets="estilos.css" text="Nova" textFill="WHITE">
+      						<JFXButton alignment="TOP_LEFT" layoutX="15.0" layoutY="236.0" onAction="#addConsulta" prefHeight="39.0" prefWidth="266.0" style="-fx-background-color: #ff9346;" styleClass="buttonMenu" stylesheets="estilos.css" text="Nova" textFill="WHITE">
       							<graphic>
       								<ImageView fitHeight="22.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
       									<image>

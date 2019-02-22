@@ -1,10 +1,14 @@
 package smiley.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Procedimento {
@@ -21,6 +25,9 @@ public class Procedimento {
 	
 	@Column(nullable=false, unique=true)
 	private String codigo;
+	
+	@OneToMany(mappedBy = "procedimento")
+	private List<ProcedimentoConsulta> procedimentosConsulta = new ArrayList<>();
 	
 	@Column(nullable=false, columnDefinition="bit")
 	private Boolean active=true;
@@ -65,6 +72,9 @@ public class Procedimento {
 		this.active = active;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return nome;
+	}
 
 }
