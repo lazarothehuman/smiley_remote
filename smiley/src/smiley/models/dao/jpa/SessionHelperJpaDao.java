@@ -50,6 +50,23 @@ public class SessionHelperJpaDao implements SessionHelperDao {
 			System.out.println("Its not null, "+user.getName());
 		return user;
 	}
+
+	@Override
+	public SessionHelper findSession() {
+		entityManager.getTransaction().begin();
+		TypedQuery<SessionHelper> query = entityManager.createQuery(
+				"select sessionHelper from SessionHelper sessionHelper "
+						+ "where sessionHelper.id = :id", SessionHelper.class);
+		query.setParameter("id", 1l);
+		List<SessionHelper> sessionHelpers = query.getResultList();
+		entityManager.getTransaction().commit();
+		if (sessionHelpers.isEmpty()) 
+			return null;
+		else {
+			return sessionHelpers.get(0);
+		}
+		
+	}
 	
 
 

@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import smiley.managers.DataManager;
 import smiley.managers.DataManagerImp;
 import smiley.models.Cliente;
+import smiley.models.Consulta;
 import smiley.models.Medico;
 import smiley.models.Procedimento;
 import smiley.models.Profile;
@@ -225,11 +226,12 @@ public class FrameManager {
 		return content;
 	}
 
-	public AnchorPane addCliente(User user) {
+
+	public AnchorPane viewConsultas(User user) {
 		AnchorPane content = null;
 		if (user != null) {
 			Profile profile = user.getProfile();
-			Transaccao transaction = dataManager.findTransaccao(101l);
+			Transaccao transaction = dataManager.findTransaccao(305l);
 			if (transaction.getProfiles().contains(profile))
 				content = loadContent(transaction.getUrl());
 			else
@@ -238,11 +240,25 @@ public class FrameManager {
 		return content;
 	}
 
+	public AnchorPane modifyConsulta(Consulta selectedConsulta, User user) {
+		AnchorPane content = null;
+		if (user != null) {
+			Profile profile = user.getProfile();
+			Transaccao transaction = dataManager.findTransaccao(201l);
+			if (transaction.getProfiles().contains(profile))
+				content = loadContent(transaction.getUrl());
+			else
+				AlertUtils.alertSemPrivelegio();
+		}
+		return content;
+		
+	}
+
 	public AnchorPane viewClientes(User user) {
 		AnchorPane content = null;
 		if (user != null) {
 			Profile profile = user.getProfile();
-			Transaccao transaction = dataManager.findTransaccao(301l);
+			Transaccao transaction = dataManager.findTransaccao(105l);
 			if (transaction.getProfiles().contains(profile))
 				content = loadContent(transaction.getUrl());
 			else

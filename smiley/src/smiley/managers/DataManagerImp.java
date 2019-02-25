@@ -32,6 +32,7 @@ import smiley.models.dao.jpa.SessionHelperJpaDao;
 import smiley.models.dao.jpa.TransaccaoJpaDao;
 import smiley.models.dao.jpa.UserJpaDao;
 import smiley.utils.ProtectedConfigFile;
+import smiley.utils.SessionHelper;
 
 public class DataManagerImp implements DataManager {
 
@@ -190,16 +191,16 @@ public class DataManagerImp implements DataManager {
 
 	@Override
 	public void createConsulta(Consulta consulta) {
-		if(consulta!=null)
+		if (consulta != null)
 			consultadao.create(consulta);
-		
+
 	}
 
 	@Override
 	public void createProcedimento(Procedimento procedimento) {
-		if(procedimento!=null)
+		if (procedimento != null)
 			procedimentoDao.create(procedimento);
-		
+
 	}
 
 	@Override
@@ -214,8 +215,43 @@ public class DataManagerImp implements DataManager {
 
 	@Override
 	public void updateProfile(Profile profile) {
-		if(profile!=null)
+		if (profile != null)
 			profileDao.update(profile);
-		
+
 	}
+
+	@Override
+	public SessionHelper getSessionHelper() {
+		SessionHelper session = sessionHelperDao.findSession();
+		if (session != null)
+			return session;
+		return null;
+	}
+
+	@Override
+	public Cliente findCliente(Long id, String name) {
+		Cliente cliente = clienteDao.find(id, name);
+		if (cliente != null)
+			return cliente;
+		return null;
+	}
+
+	@Override
+	public User findUser(Long id, String name) {
+		User user = null;
+		if (id != null)
+			user = userDao.find(id);
+		else
+			user = userDao.find(name);
+		return user;
+	}
+
+	@Override
+	public Medico findMedico(Long id, String name) {
+		Medico medico = medicoDao.find(id, name);
+		if (medico != null)
+			return medico;
+		return null;
+	}
+
 }

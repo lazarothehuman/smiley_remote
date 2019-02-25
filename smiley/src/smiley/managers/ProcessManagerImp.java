@@ -2,10 +2,13 @@ package smiley.managers;
 
 import java.util.List;
 
+import smiley.models.Cliente;
 import smiley.models.Consulta;
 import smiley.models.Empresa;
+import smiley.models.Medico;
 import smiley.models.Procedimento;
 import smiley.models.ProcedimentoConsulta;
+import smiley.models.User;
 import smiley.models.dao.ConsultaDao;
 import smiley.models.dao.EmpresaDao;
 import smiley.models.dao.ProcedimentoDao;
@@ -58,6 +61,19 @@ public class ProcessManagerImp implements ProcessManager {
 			procedimentoDao.update(procedimento);
 		}
 		
+	}
+
+	@Override
+	public void updateConsulta(Consulta consulta) {
+		if (consulta != null) {
+			consultaDao.update(consulta);
+		}
+		
+	}
+
+	@Override
+	public List<Consulta> findConsultas(Cliente cliente, Medico medico, User user, Long id, Boolean active) {
+		return consultaDao.find(cliente, medico, user, id, active);
 	}
 
 }

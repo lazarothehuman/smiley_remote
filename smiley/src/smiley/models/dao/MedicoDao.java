@@ -15,4 +15,6 @@ public interface MedicoDao {
 	public List<Medico> find(Long id, String nome, String email, String telefone, Date startDate, Date endDate, Sexo sexo,
 			Boolean activee);
 
+	public Medico find(Long id, String name);
+
 }

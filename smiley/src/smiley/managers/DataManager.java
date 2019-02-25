@@ -14,6 +14,7 @@ import smiley.models.Profile;
 import smiley.models.Sexo;
 import smiley.models.Transaccao;
 import smiley.models.User;
+import smiley.utils.SessionHelper;
 
 public interface DataManager {
 	
@@ -45,5 +46,10 @@ public interface DataManager {
 	public Transaccao findTransaccao(Long code);
 	public List<Transaccao> findAllTransaccoes();
 	public void updateProfile(Profile profile);
+	public SessionHelper getSessionHelper();
+	
+	public Cliente findCliente(Long	id, String selectedCliente);
+	public User findUser(Long  id, String selectedUsuario);
+	public Medico findMedico(Long id , String selectedMedico);
 
 }

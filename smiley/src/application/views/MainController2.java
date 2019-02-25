@@ -180,12 +180,17 @@ public class MainController2 implements Initializable {
 	}
 
 	public void addCliente() {
-		AnchorPane content = frameManager.addCliente(user);
+		AnchorPane content = frameManager.addClient(user);
 		setContent(content);
 	}
 
 	public void viewCliente() {
 		AnchorPane content = frameManager.viewClientes(user);
+		setContent(content);
+	}
+	
+	public void viewConsultas() {
+		AnchorPane content = frameManager.viewConsultas(user);
 		setContent(content);
 	}
 

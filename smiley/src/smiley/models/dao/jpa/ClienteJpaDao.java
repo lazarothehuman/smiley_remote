@@ -118,4 +118,39 @@ public class ClienteJpaDao implements ClienteDao {
 
 	}
 
+	@Override
+	public Cliente find(Long id, String name) {
+		entityManager.getTransaction().begin();
+		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Cliente> query = criteriaBuilder.createQuery(Cliente.class);
+
+		Root<Cliente> root = query.from(Cliente.class);
+		List<Predicate> predicates = new ArrayList<Predicate>();
+
+		Path<Long> idPath = root.<Long>get("id");
+		Path<String> nomePath = root.<String>get("nome");
+		Path<Boolean> activePath = root.<Boolean>get("active");
+
+		if (id != null) {
+			Predicate predicate = criteriaBuilder.equal(idPath, id);
+			predicates.add(predicate);
+		}
+
+		if (name != null) {
+			if (!name.isEmpty()) {
+				Predicate predicate = criteriaBuilder.like(nomePath, "%" + name + "%");
+				predicates.add(predicate);
+			}
+		}
+		Boolean active = true;
+		Predicate predicate = criteriaBuilder.equal(activePath, active);
+		predicates.add(predicate);
+
+		query.where(predicates.toArray(new Predicate[predicates.size()]));
+
+		TypedQuery<Cliente> typedQuery = entityManager.createQuery(query);
+		entityManager.getTransaction().commit();
+		return typedQuery.getResultList().get(0);
+	}
+
 }

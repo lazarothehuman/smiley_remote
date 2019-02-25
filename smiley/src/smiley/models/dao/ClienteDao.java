@@ -17,4 +17,6 @@ public interface ClienteDao {
 
 	public void update(Cliente selectedCliente);
 
+	public Cliente find(Long id, String name);
+
 }

@@ -105,4 +105,40 @@ public class MedicoJpaDao implements MedicoDao {
 		entityManager.getTransaction().commit();
 		return typedQuery.getResultList();
 	}
+
+	@Override
+	public Medico find(Long id, String name) {
+		entityManager.getTransaction().begin();
+		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Medico> query = criteriaBuilder.createQuery(Medico.class);
+
+		Root<Medico> root = query.from(Medico.class);
+		List<Predicate> predicates = new ArrayList<Predicate>();
+
+		Path<Long> idPath = root.<Long>get("id");
+		Path<String> nomePath = root.<String>get("name");
+		Path<Boolean> activePath = root.<Boolean>get("active");
+
+		if (id != null) {
+			Predicate predicate = criteriaBuilder.equal(idPath, id);
+			predicates.add(predicate);
+		}
+
+		if (name != null) {
+			if (!name.isEmpty()) {
+				Predicate predicate = criteriaBuilder.like(nomePath, "%" + name + "%");
+				predicates.add(predicate);
+			}
+		}
+		Boolean active = true;
+		Predicate predicate = criteriaBuilder.equal(activePath, active);
+		predicates.add(predicate);
+
+		query.where(predicates.toArray(new Predicate[predicates.size()]));
+
+		TypedQuery<Medico> typedQuery = entityManager.createQuery(query);
+		entityManager.getTransaction().commit();
+		return typedQuery.getResultList().get(0);
+	
+	}
 }

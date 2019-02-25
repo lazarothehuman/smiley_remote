@@ -15,6 +15,7 @@ import smiley.models.Profile;
 import smiley.models.Sexo;
 import smiley.models.Transaccao;
 import smiley.models.User;
+import smiley.utils.SessionHelper;
 
 public class DataManagerImpTest {
 	
@@ -23,11 +24,11 @@ public class DataManagerImpTest {
 
 	@Test
 	public void createTransactionTest() {
-		Profile profile = dataManager.findProfile(1l);
+		Profile profile = dataManager.findProfile(2l);
 		Transaccao transaccao = new Transaccao();
 		transaccao.setActive(true);
-		transaccao.setUrl("/application/views/View-Clients.fxml");
-		transaccao.setCode(301l);
+		transaccao.setUrl("/application/views/View-Consultas.fxml");
+		transaccao.setCode(305l);
 		transaccao.addProfile(profile);
 		profile.addTransaction(transaccao);
 		dataManager.updateProfile(profile);
@@ -38,8 +39,8 @@ public class DataManagerImpTest {
 	
 	@Test
 	public void insertTransactionIntoProfileTest() {
-		Profile profile = dataManager.findProfile(1l);
-		Transaccao transaccao = dataManager.findTransaccao(102l);
+		Profile profile = dataManager.findProfile(2l);
+		Transaccao transaccao = dataManager.findTransaccao(305l);
 		if(profile!=null && transaccao!=null) {
 			profile.addTransaction(transaccao);
 			transaccao.addProfile(profile);
@@ -184,6 +185,27 @@ public class DataManagerImpTest {
 		medico.setActive(true);
 		Assert.assertNotNull(medico.getId());
 		Assert.assertEquals(Boolean.TRUE, medico.getActive());
+		
+	}
+	
+	
+	@Test
+	public void getSessionHelperTest() {
+		SessionHelper sessionHelper = dataManager.getSessionHelper();
+		Assert.assertNotNull(sessionHelper);
+		Assert.assertNotNull(sessionHelper.getObjects());
+	}
+	
+	@Test
+	public void setObjectInSessionTest() {
+		SessionHelper sessionHelper = dataManager.getSessionHelper();
+		User user = dataManager.findUser(1l);
+		sessionHelper.getObjects().put("User", user);
+		Assert.assertNotNull(user);
+		User geting = (User) sessionHelper.getObjects().get("User");
+
+		Assert.assertNotNull(geting);
+		Assert.assertEquals(user.getName(), geting.getName());
 		
 	}
 	

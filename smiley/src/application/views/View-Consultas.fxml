@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="ContentPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.ViewConsultasController">
+   <children>
+      <SplitPane dividerPositions="0.06446991404011461" layoutX="169.0" layoutY="28.0" orientation="VERTICAL" prefHeight="700.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="69.0" prefWidth="1100.0" style="-fx-background-color: #000000;">
+               <children>
+                  <Label alignment="TOP_CENTER" layoutY="6.0" prefHeight="81.0" prefWidth="1100.0" style="-fx-background-color: #ea9400;" text=" Visualizar Consultas" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font size="30.0" />
+                     </font></Label>
+                  
+               </children></AnchorPane>
+          <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="1100.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <TableView fx:id="tableConsultas" layoutX="113.0" layoutY="95.0" prefHeight="465.0" prefWidth="880.0" style="-fx-border-width: 2; -fx-border-color: #000000;" stylesheets="@../padrao.css" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn fx:id="idColumn" prefWidth="139.0" text="ID" />
+                      <TableColumn fx:id="dataRealizacaoColumn" prefWidth="120.0" text="Data Realizacao" />
+                        <TableColumn fx:id="clienteColumn" minWidth="0.0" prefWidth="127.0" text="Cliente" />
+                        <TableColumn fx:id="medicoColumn" minWidth="0.0" prefWidth="260.0" text="Medico" />
+                        <TableColumn fx:id="usuarioColumn" minWidth="0.0" prefWidth="231.0" text="Usuario" />
+                    </columns>
+                  </TableView>
+                  <VBox alignment="CENTER" layoutX="880.0" layoutY="79.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="442.0" prefWidth="219.0" spacing="25.0" AnchorPane.bottomAnchor="129.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="79.0">
+                     <children>
+                        <HBox alignment="CENTER" layoutX="1082.0" layoutY="46.0" maxHeight="-Infinity" maxWidth="-Infinity" spacing="5.0" VBox.vgrow="NEVER">
+                           <children>
+                              <Label layoutX="1082.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="17.0" prefWidth="44.0" text="Cliente:" wrapText="true" />
+                              <TextField fx:id="clienteTf" layoutX="1145.0" layoutY="46.0" maxHeight="-Infinity" maxWidth="-Infinity" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="5.0">
+                           <children>
+                              <Label layoutX="1082.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="17.0" prefWidth="44.0" text="Medico:" wrapText="true" />
+                              <TextField fx:id="medicoTf" layoutX="1145.0" layoutY="46.0" maxHeight="-Infinity" maxWidth="-Infinity" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="5.0">
+                           <children>
+                              <Label layoutX="1082.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="17.0" prefWidth="44.0" text="Usuario" wrapText="true" />
+                              <TextField fx:id="userTf" layoutX="1145.0" layoutY="46.0" maxHeight="-Infinity" maxWidth="-Infinity" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="1082.0" layoutY="88.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="193.0" spacing="5.0" VBox.vgrow="NEVER">
+                           <children>
+                              <Label layoutX="1082.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="17.0" prefWidth="48.0" text="ID" />
+                              <TextField fx:id="idTf" layoutX="1145.0" layoutY="46.0" />
+                           </children>
+                        </HBox>
+                        <CheckBox fx:id="actives" layoutX="1083.0" layoutY="256.0" mnemonicParsing="false" text="Mostrar inactivos" />
+                        <JFXButton layoutX="1108.0" layoutY="299.0" onAction="#pesquisar" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #ea9400;" text="Pesquisar" textFill="WHITE" />
+                     </children>
+                  </VBox>
+                  <HBox layoutX="21.0" layoutY="590.0" spacing="7.0" style="-fx-padding: 5; -fx-background-insets: 5; -fx-border-insets: 5;">
+                     <children>
+                        <JFXButton layoutX="34.0" layoutY="472.0" style="-fx-background-color: #ea9400;" text="Adicionar nova consulta" textFill="WHITE" />
+                        <JFXButton layoutX="184.0" layoutY="472.0" style="-fx-background-color: #ea9400;" text="Modificar consulta" textFill="WHITE" />
+                        <JFXButton layoutX="306.0" layoutY="472.0" onAction="#remover" style="-fx-background-color: #ea9400;" text="Remover consulta" textFill="WHITE" />
+                     </children>
+                  </HBox>
+                  <Label layoutX="697.0" layoutY="599.0" text="Total de itens na procura:">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblTotal" layoutX="858.0" layoutY="599.0" text="0" />
+                  <Label alignment="CENTER" layoutX="904.0" layoutY="20.0" prefHeight="36.0" prefWidth="172.0" style="-fx-border-color: #ea9400; -fx-background-color: #ea9400;" text="Pesquisa avançada" textFill="WHITE" AnchorPane.bottomAnchor="569.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="20.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
