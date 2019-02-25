@@ -9,14 +9,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="700.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.forms.AddClientController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.forms.AddClientController">
    <children>
       <Label alignment="CENTER" prefHeight="106.0" prefWidth="700.0" style="-fx-background-color: #ea9400;" text="ADICIONAR CLIENTE" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <VBox layoutX="25.0" layoutY="196.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="370.0" prefWidth="664.0" spacing="30.0">
+      <VBox layoutX="25.0" layoutY="196.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="353.0" prefWidth="664.0" spacing="30.0">
          <children>
             <HBox>
                <children>
@@ -85,22 +85,17 @@
             <CheckBox fx:id="encarregadoCb" mnemonicParsing="false" onAction="#selectCheckBox" text="Tem encarregado?" />
          </children>
       </VBox>
-      <ImageView fx:id="add" fitHeight="84.0" fitWidth="78.0" layoutX="311.0" layoutY="716.0" onMouseClicked="#add" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="icons8-plus-filled-100.png" />
-         </image>
-      </ImageView>
       <Label layoutX="25.0" layoutY="153.0" prefHeight="31.0" prefWidth="664.0" text="Dados pessoais" textFill="#ea9400">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="25.0" layoutY="566.0" prefHeight="31.0" prefWidth="163.0" text="Dados encarregado" textFill="#ea9400">
+      <Label layoutX="25.0" layoutY="557.0" prefHeight="31.0" prefWidth="163.0" text="Dados encarregado" textFill="#ea9400">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <VBox layoutX="20.0" layoutY="608.0" prefHeight="96.0" prefWidth="308.0" spacing="15.0">
+      <VBox layoutX="20.0" layoutY="596.0" prefHeight="96.0" prefWidth="308.0" spacing="15.0">
          <children>
             <HBox alignment="CENTER_LEFT" layoutX="141.0" layoutY="655.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="298.0" spacing="15.0">
                <children>
@@ -117,6 +112,7 @@
          </children>
       </VBox>
       <Line endX="650.0" layoutX="20.0" layoutY="184.0" stroke="#c2c2c2" />
-      <Line endX="650.0" layoutX="20.0" layoutY="600.0" stroke="#c2c2c2" />
+      <Line endX="650.0" layoutX="32.0" layoutY="588.0" stroke="#c2c2c2" />
+      <JFXButton layoutX="581.0" layoutY="661.0" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: #ea9400;" text="Adicionar" textFill="WHITE" />
    </children>
 </AnchorPane>

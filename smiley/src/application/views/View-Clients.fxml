@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane onKeyPressed="#enterKeyPressed" prefHeight="800.0" prefWidth="700.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.ViewClientController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#enterKeyPressed" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.ViewClientController">
    <children>
       <SplitPane dividerPositions="0.14046822742474915" layoutX="169.0" layoutY="28.0" orientation="VERTICAL" prefHeight="800.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -18,22 +18,8 @@
                      <font>
                         <Font size="30.0" />
                      </font></Label>
-                  <HBox alignment="CENTER" layoutX="636.0" layoutY="41.0" prefHeight="36.0" prefWidth="274.0" AnchorPane.leftAnchor="636.0" AnchorPane.rightAnchor="490.0">
-                     <children>
-                        <Hyperlink fx:id="home" layoutX="604.0" layoutY="43.0" onAction="#goHome" text="Home" textFill="WHITE">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Hyperlink>
-                        <Hyperlink fx:id="about" layoutX="725.0" layoutY="43.0" onAction="#about" text="Sobre" textFill="WHITE">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Hyperlink>
-                     </children>
-                  </HBox>
                </children></AnchorPane>
-          <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="1400.0" style="-fx-background-color: #ffffff;">
+          <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="1100.0" style="-fx-background-color: #ffffff;">
                <children>
                   <TableView fx:id="tableCliente" layoutX="113.0" layoutY="95.0" onMouseClicked="#doubleClickOnClient" prefHeight="465.0" prefWidth="700.0" style="-fx-border-width: 2; -fx-border-color: #000000;" stylesheets="@../padrao.css" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="0.0">
                     <columns>
@@ -46,12 +32,12 @@
                         <TableColumn fx:id="moradaColumn" prefWidth="142.0" text="Morada" />
                     </columns>
                   </TableView>
-                  <Label alignment="CENTER" layoutX="1211.0" prefHeight="36.0" prefWidth="172.0" style="-fx-border-color: #ea9400; -fx-background-color: #ea9400;" text="Pesquisa avançada" textFill="WHITE">
+                  <Label alignment="CENTER" layoutX="903.0" layoutY="8.0" prefHeight="36.0" prefWidth="172.0" style="-fx-border-color: #ea9400; -fx-background-color: #ea9400;" text="Pesquisa avançada" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <VBox alignment="CENTER" layoutX="1191.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="211.0" spacing="25.0" AnchorPane.bottomAnchor="51.0" AnchorPane.topAnchor="60.0">
+                  <VBox alignment="CENTER" layoutX="893.0" layoutY="67.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="466.0" prefWidth="192.0" spacing="25.0">
                      <children>
                         <HBox alignment="CENTER" layoutX="1082.0" layoutY="46.0" maxHeight="-Infinity" maxWidth="-Infinity" spacing="5.0" VBox.vgrow="NEVER">
                            <children>
@@ -88,19 +74,19 @@
                         <JFXButton fx:id="pesquisar" layoutX="1108.0" layoutY="299.0" onAction="#pesquisar" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #ea9400;" text="Pesquisar" textFill="WHITE" />
                      </children>
                   </VBox>
-                  <HBox layoutX="33.0" layoutY="471.0" spacing="7.0" style="-fx-padding: 5; -fx-background-insets: 5; -fx-border-insets: 5;">
+                  <HBox layoutX="22.0" layoutY="560.0" spacing="7.0" style="-fx-padding: 5; -fx-background-insets: 5; -fx-border-insets: 5;">
                      <children>
                         <JFXButton fx:id="adicionarCliente" layoutX="34.0" layoutY="472.0" onAction="#addCliente" style="-fx-background-color: #ea9400;" text="Adicionar novo cliente" textFill="WHITE" />
                         <JFXButton fx:id="modificarCliente" layoutX="184.0" layoutY="472.0" onAction="#modificarCliente" style="-fx-background-color: #ea9400;" text="Modificar cliente" textFill="WHITE" />
                         <JFXButton fx:id="removerCliente" layoutX="306.0" layoutY="472.0" onAction="#removerCliente" style="-fx-background-color: #ea9400;" text="Remover cliente" textFill="WHITE" />
                      </children>
                   </HBox>
-                  <Label layoutX="877.0" layoutY="473.0" text="Total de itens na procura:">
+                  <Label layoutX="677.0" layoutY="569.0" text="Total de itens na procura:">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblTotal" layoutX="1029.0" layoutY="473.0" text="0" />
+                  <Label fx:id="lblTotal" layoutX="842.0" layoutY="569.0" text="0" />
                </children></AnchorPane>
         </items>
       </SplitPane>
