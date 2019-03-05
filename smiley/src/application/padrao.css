@@ -2,6 +2,7 @@
 	-fx-primary: #ea9400;
 	-fx-secondary: #ffffff;
 	-fx-primarytext: #ea9400;
+	-fx-nill: #000000;
 }
 
 .root {
@@ -23,9 +24,9 @@
 }
 
 .text-field {
-	-fx-text-fill: -fx-primary;
+	-fx-text-fill: -fx-nill;
 	-jfx-focus-color: -fx-primary;
-	-fx-font-size: 14pt;
+	-fx-font-size: 18pt;
 }
 
 .table-view .column-header,

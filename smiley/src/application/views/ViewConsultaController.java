@@ -1,11 +1,9 @@
 package application.views;
 
 import java.net.URL;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -14,6 +12,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
@@ -24,9 +23,9 @@ import smiley.managers.DataManager;
 import smiley.managers.DataManagerImp;
 import smiley.managers.ProcessManager;
 import smiley.managers.ProcessManagerImp;
-import smiley.models.Cliente;
 import smiley.models.Consulta;
-import smiley.models.Medico;
+import smiley.models.ProcedimentoConsulta;
+import smiley.utils.ApplicationUtils;
 import smiley.utils.SessionHelper;
 
 public class ViewConsultaController implements Initializable {
@@ -35,22 +34,20 @@ public class ViewConsultaController implements Initializable {
 	Label lblTotal;
 
 	@FXML
-	TableView<Consulta> tableConsultas;
+	TableView<ProcedimentoConsulta> tableProcedimentoConsulta;
 
 	@FXML
-	TableColumn<Consulta, Date> dataRealizacaoColumn;
-
+	TableColumn<ProcedimentoConsulta, String> quantidadeColumn;
+	
 	@FXML
-	TableColumn<Consulta, String> clienteNameColumn;
-
+	TableColumn<ProcedimentoConsulta, String> nomeProcedimentoColumn;
+	
 	@FXML
-	TableColumn<Consulta, String> medicoNameColumn;
-
+	TableColumn<ProcedimentoConsulta, String> valorUnitarioColumn;
+	
 	@FXML
-	TableColumn<Consulta, String> userNameColumn;
+	TableColumn<ProcedimentoConsulta, String> valorTotalColumn;
 
-	@FXML
-	TableColumn<Consulta, String> idColumn;
 
 	@FXML
 	TextField medicoTf = new TextField();
@@ -62,81 +59,84 @@ public class ViewConsultaController implements Initializable {
 	TextField usuarioTf = new TextField();
 
 	@FXML
-	TextField idTf = new TextField();
+	DatePicker dataRealizacao;
 
 	DataManager dataManager = new DataManagerImp();
 	ProcessManager processManager = new ProcessManagerImp();
 
-	List<Consulta> consultaListModel = new ArrayList<>();
+	List<ProcedimentoConsulta> procedimentosConsultaModel = new ArrayList<>();
 
 	SessionHelper session = dataManager.getSessionHelper();
+	
+	Consulta consulta;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		medicoNameColumn.setCellValueFactory(
-				new Callback<TableColumn.CellDataFeatures<Consulta, String>, ObservableValue<String>>() {
-
+		quantidadeColumn.setCellValueFactory(
+				new Callback<TableColumn.CellDataFeatures<ProcedimentoConsulta, String>, ObservableValue<String>>() {
 					@Override
-					public ObservableValue<String> call(CellDataFeatures<Consulta, String> param) {
-						return new SimpleStringProperty(param.getValue().getMedico().getName());
+					public ObservableValue<String> call(CellDataFeatures<ProcedimentoConsulta, String> param) {
+						return new SimpleStringProperty(param.getValue().getQuantidade()+"");
 					}
 				});
 
-		clienteNameColumn.setCellValueFactory(
-				new Callback<TableColumn.CellDataFeatures<Consulta, String>, ObservableValue<String>>() {
-					@Override
-					public ObservableValue<String> call(CellDataFeatures<Consulta, String> param) {
-						return new SimpleStringProperty(param.getValue().getCliente().getNome());
-					}
-				});
-
-		userNameColumn.setCellValueFactory(
-				new Callback<TableColumn.CellDataFeatures<Consulta, String>, ObservableValue<String>>() {
+		nomeProcedimentoColumn.setCellValueFactory(
+				new Callback<TableColumn.CellDataFeatures<ProcedimentoConsulta, String>, ObservableValue<String>>() {
 
 					@Override
-					public ObservableValue<String> call(CellDataFeatures<Consulta, String> param) {
-						Consulta consulta = param.getValue();
-						return new SimpleStringProperty(consulta.getUser().getName());
+					public ObservableValue<String> call(CellDataFeatures<ProcedimentoConsulta, String> param) {
+						ProcedimentoConsulta consulta = param.getValue();
+						return new SimpleStringProperty(consulta.getProcedimento().getNome());
 					}
 				});
+		
+		valorTotalColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ProcedimentoConsulta,String>, ObservableValue<String>>() {
 
-		idColumn.setCellValueFactory(
-				new Callback<TableColumn.CellDataFeatures<Consulta, String>, ObservableValue<String>>() {
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<ProcedimentoConsulta, String> param) {
+				ProcedimentoConsulta consulta = param.getValue();
+				return new SimpleStringProperty(consulta.getProcedimento().getValor()*consulta.getQuantidade()+" MTN");
+			}
+		});
+		
+		valorUnitarioColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ProcedimentoConsulta,String>, ObservableValue<String>>() {
 
-					@Override
-					public ObservableValue<String> call(CellDataFeatures<Consulta, String> param) {
-						Consulta consulta = param.getValue();
-						return new SimpleStringProperty(consulta.getId() + "");
-					}
-				});
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<ProcedimentoConsulta, String> param) {
+				ProcedimentoConsulta consulta = param.getValue();
+				return new SimpleStringProperty(consulta.getProcedimento().getValor()+" MTN");
+			}
+		});
+		consulta = (Consulta) ApplicationUtils.take("selectedConsulta");
+		medicoTf.setText(consulta.getMedico().getName());
+		usuarioTf.setText(consulta.getUser().getName());
+		clienteTf.setText(consulta.getCliente().getNome());
+		LocalDate date = consulta.getDataRealizacao().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		dataRealizacao.setValue(date);
+		medicoTf.setDisable(true);
+		usuarioTf.setDisable(true);
+		clienteTf.setDisable(true);
+		dataRealizacao.setDisable(true);
+		
+		procedimentosConsultaModel.addAll(consulta.getProcedimentosConsulta());
+		refreshItems();		
 
 	}
 
-	public void adicionarConsulta() {
-
-	}
 
 	private void refreshItems() {
-		if (!consultaListModel.isEmpty()) {
-			tableConsultas.setItems(FXCollections.observableArrayList(consultaListModel));
-			lblTotal.setText(consultaListModel.size() + "");
+		if (!procedimentosConsultaModel.isEmpty()) {
+			tableProcedimentoConsulta.setItems(FXCollections.observableArrayList(procedimentosConsultaModel));
+			lblTotal.setText(procedimentosConsultaModel.size() + "");
 		}
 
 	}
-	
-	public void pesquisar() {
-		String selectedCliente = clienteTf.getText();
-		String selectedMedico = medicoTf.getText();
-		String selectedUsuario = usuarioTf.getText();
-		String selectedId = idTf.getText();
-		//consultaListModel  = processManager.findConsultas(selectedCliente, selectedMedico, selectedUsuario, selectedId, true );
-	}
 
 	public void remove() {
-		Consulta selectedItem = tableConsultas.getSelectionModel().getSelectedItem();
+		ProcedimentoConsulta selectedItem = tableProcedimentoConsulta.getSelectionModel().getSelectedItem();
 		if (selectedItem != null) {
-			consultaListModel.remove(selectedItem);
+			procedimentosConsultaModel.remove(selectedItem);
 			refreshItems();
 		}
 	}

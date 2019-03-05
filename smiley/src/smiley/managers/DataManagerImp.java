@@ -114,7 +114,9 @@ public class DataManagerImp implements DataManager {
 			calendar.add(Calendar.DAY_OF_MONTH, 1);
 			endDate = calendar.getTime();
 		}
-		return clienteDao.findClients(id, nome, email, telefone, startDate, endDate, sexo, active);
+		List<Cliente> list = clienteDao.findClients(id, nome, email, telefone, startDate, endDate, sexo, active);
+		list.sort(null);
+		return list;
 	}
 
 	@Override

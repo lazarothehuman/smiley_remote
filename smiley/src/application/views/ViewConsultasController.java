@@ -10,18 +10,21 @@ import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 import smiley.managers.DataManager;
@@ -35,6 +38,7 @@ import smiley.models.User;
 import smiley.utils.AlertUtils;
 import smiley.utils.ApplicationUtils;
 import smiley.utils.FrameManager;
+import smiley.utils.SessionHelper;
 
 public class ViewConsultasController implements Initializable {
 
@@ -78,10 +82,10 @@ public class ViewConsultasController implements Initializable {
 	CheckBox actives;
 
 	List<Consulta> consultasList = new ArrayList<>();
-
+	DataManager dataManager = new DataManagerImp();
+	SessionHelper session = dataManager.getSessionHelper();
 	ProcessManager processManager = new ProcessManagerImp();
 	FrameManager frameManager = new FrameManager();
-	DataManager dataManager = new DataManagerImp();
 	User user;
 
 	@Override
@@ -112,6 +116,17 @@ public class ViewConsultasController implements Initializable {
 						return new SimpleStringProperty(param.getValue().getUser().getName());
 					}
 				});
+
+		tableConsultas.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent mouseEvent) {
+				if (mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
+					if (mouseEvent.getClickCount() == 2) 
+						openConsulta();
+					
+				}
+			}
+		});
 
 	}
 
@@ -145,6 +160,18 @@ public class ViewConsultasController implements Initializable {
 		if (content != null)
 			setContent(content);
 
+	}
+
+	public void openConsulta() {
+		Consulta selectedConsulta = null;
+		selectedConsulta = tableConsultas.getSelectionModel().getSelectedItem();
+		if (selectedConsulta != null) {
+			ApplicationUtils.add("selectedConsulta", selectedConsulta);
+			AnchorPane content = frameManager.viewConsulta(user);
+			if (content != null)
+				setContent(content);
+		}else 
+			AlertUtils.alertErroSelecionar("Selecione uma consulta");
 	}
 
 	public void modify() {

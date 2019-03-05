@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: #ffffff;" stylesheets="@../padrao.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.ViewConsultaController">
+   <children>
+      <Label alignment="CENTER" prefHeight="106.0" prefWidth="700.0" style="-fx-background-color: #ea9400;" text="VISUALIZAR CONSULTA" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" layoutX="22.0" layoutY="128.0" spacing="30.0">
+         <children>
+            <Label layoutX="58.0" layoutY="134.0" text="Medico:" />
+            <JFXTextField fx:id="medicoTf" focusColor="#ff6600" maxWidth="218.0" minWidth="218.0" prefHeight="47.0" prefWidth="218.0" unFocusColor="#ff6600">
+               <font>
+                  <Font size="18.0" />
+               </font></JFXTextField>
+            <Label layoutX="316.0" layoutY="134.0" text="Data realização:" />
+            <DatePicker fx:id="dataRealizacao" disable="true" editable="false" layoutX="410.0" layoutY="130.0" prefHeight="41.0" prefWidth="214.0" />
+            <Label layoutX="716.0" layoutY="143.0" text="Nome do paciente:" />
+            <JFXTextField fx:id="clienteTf" maxWidth="168.0" minWidth="161.0" prefHeight="47.0" prefWidth="161.0" />
+         </children>
+      </HBox>
+      <TableView fx:id="tableProcedimentoConsulta" layoutX="22.0" layoutY="271.0" prefHeight="356.0" prefWidth="958.0" stylesheets="@../../../resources/padrao.css">
+        <columns>
+          <TableColumn fx:id="quantidadeColumn" prefWidth="113.0" text="Quantidade" />
+          <TableColumn fx:id="nomeProcedimentoColumn" prefWidth="298.0" text="Procedimento" />
+            <TableColumn fx:id="valorUnitarioColumn" prefWidth="248.0" text="Valor Unitario" />
+            <TableColumn fx:id="valorTotalColumn" prefWidth="296.0" text="Valor Total" />
+        </columns>
+      </TableView>
+      <HBox alignment="CENTER" layoutX="22.0" layoutY="193.0" spacing="30.0" />
+      <HBox alignment="CENTER" layoutX="22.0" layoutY="193.0" spacing="30.0" />
+      <HBox alignment="CENTER" layoutX="23.0" layoutY="186.0">
+         <children>
+            <Label layoutX="23.0" layoutY="214.0" text="Registrador:" />
+            <JFXTextField fx:id="usuarioTf" layoutX="74.0" layoutY="186.0" maxWidth="160.0" minWidth="160.0" prefHeight="47.0" prefWidth="160.0" />
+         </children>
+      </HBox>
+      <Label fx:id="lblTotal" layoutX="952.0" layoutY="637.0" text="Label" />
+   </children>
+</AnchorPane>

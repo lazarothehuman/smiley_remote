@@ -266,4 +266,17 @@ public class FrameManager {
 		}
 		return content;
 	}
+
+	public AnchorPane viewConsulta(User user) {
+		AnchorPane content = null;
+		if (user != null) {
+			Profile profile = user.getProfile();
+			Transaccao transaction = dataManager.findTransaccao(307l);
+			if (transaction.getProfiles().contains(profile))
+				content = loadContent(transaction.getUrl());
+			else
+				AlertUtils.alertSemPrivelegio();
+		}
+		return content;
+	}
 }
