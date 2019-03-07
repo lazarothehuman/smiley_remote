@@ -8,45 +8,18 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane onKeyPressed="#enterKeyPressed" prefHeight="600.0" prefWidth="963.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.ViewUserController">
+<AnchorPane fx:id="ContentPane" onKeyPressed="#enterKeyPressed" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.settings.ViewUserController">
    <children>
       <SplitPane dividerPositions="0.14046822742474915" layoutX="169.0" layoutY="28.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="27.0" prefWidth="1129.0" style="-fx-background-color: #000000;">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="27.0" prefWidth="1129.0" style="-fx-background-color: #ffffff;">
                <children>
-                  <Pane id="headerPane" fx:id="mainTab" layoutY="-2.0" prefHeight="89.0" prefWidth="144.0" style="-fx-background-color: #ea9400;">
-                     <children>
-                        <VBox alignment="CENTER" layoutX="1.0" layoutY="3.0" prefHeight="81.0" prefWidth="144.0">
-                           <children>
-                              <Label fx:id="lblUser" alignment="CENTER" layoutX="9.0" layoutY="14.0" prefHeight="25.0" prefWidth="115.0" text="Candinha" textFill="WHITE">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="lblProfile" alignment="CENTER" layoutX="9.0" layoutY="36.0" prefHeight="34.0" prefWidth="140.0" text="Directora" textFill="WHITE" wrapText="true" />
-                           </children>
-                        </VBox>
-                     </children>
-                  </Pane>
-                  <Label alignment="TOP_CENTER" layoutX="146.0" layoutY="6.0" prefHeight="81.0" prefWidth="1132.0" style="-fx-background-color: #ea9400;" text=" Visualizar Usuários" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="146.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Label alignment="TOP_CENTER" layoutX="146.0" layoutY="6.0" prefHeight="81.0" prefWidth="1100.0" style="-fx-background-color: #ea9400;" text=" Visualizar Usuários" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
                         <Font size="30.0" />
                      </font>
                   </Label>
-                  <HBox alignment="CENTER" layoutX="417.0" layoutY="43.0" prefHeight="25.0" prefWidth="274.0">
-                     <children>
-                        <Hyperlink fx:id="home" layoutX="604.0" layoutY="43.0" onAction="#goHome" text="Home" textFill="WHITE">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Hyperlink>
-                        <Hyperlink fx:id="about" layoutX="725.0" layoutY="43.0" onAction="#about" text="Sobre" textFill="WHITE">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Hyperlink>
-                     </children>
-                  </HBox>
+                 
                   <ImageView fitHeight="70.0" fitWidth="83.0" layoutX="877.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="brilhodental.png" />
@@ -67,12 +40,12 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <Label alignment="CENTER" layoutX="751.0" layoutY="20.0" prefHeight="36.0" prefWidth="172.0" style="-fx-border-color: #ea9400; -fx-background-color: #ea9400;" text="Pesquisa avançada" textFill="WHITE">
+                  <Label alignment="CENTER" layoutX="875.0" layoutY="14.0" prefHeight="36.0" prefWidth="172.0" style="-fx-border-color: #ea9400; -fx-background-color: #ea9400;" text="Pesquisa avançada" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <VBox alignment="CENTER" layoutX="717.0" layoutY="75.0" prefHeight="361.0" prefWidth="235.0" spacing="25.0">
+                  <VBox alignment="CENTER" layoutX="843.0" layoutY="95.0" prefHeight="361.0" prefWidth="235.0" spacing="25.0">
                      <children>
                         <HBox alignment="CENTER_LEFT" layoutX="1082.0" layoutY="46.0" spacing="5.0">
                            <children>
@@ -92,19 +65,19 @@
                         <JFXButton fx:id="pesquisar" layoutX="1108.0" layoutY="299.0" onAction="#pesquisar" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #ea9400;" text="Pesquisar" textFill="WHITE" />
                      </children>
                   </VBox>
-                  <HBox layoutX="33.0" layoutY="471.0" spacing="7.0" style="-fx-padding: 5; -fx-border-insets: 5; -fx-background-insets: 5;">
+                  <HBox layoutX="29.0" layoutY="560.0" spacing="7.0" style="-fx-padding: 5; -fx-border-insets: 5; -fx-background-insets: 5;">
                      <children>
                         <JFXButton fx:id="adicionarUser" layoutX="34.0" layoutY="472.0" onAction="#addUser" style="-fx-background-color: #ea9400;" text="Adicionar novo usuário" textFill="WHITE" />
                         <JFXButton fx:id="modificarUser" layoutX="184.0" layoutY="472.0" onAction="#modifyUser" style="-fx-background-color: #ea9400;" text="Modificar usuário" textFill="WHITE" />
                         <JFXButton fx:id="removerUser" layoutX="306.0" layoutY="472.0" onAction="#removerUser" style="-fx-background-color: #ea9400;" text="Remover usuário" textFill="WHITE" />
                      </children>
                   </HBox>
-                  <Label layoutX="505.0" layoutY="475.0" text="Total de itens na procura:">
+                  <Label layoutX="636.0" layoutY="560.0" text="Total de itens na procura:">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblTotal" layoutX="667.0" layoutY="475.0" text="0" />
+                  <Label fx:id="lblTotal" layoutX="800.0" layoutY="560.0" text="0" />
                </children>
             </AnchorPane>
          </items>

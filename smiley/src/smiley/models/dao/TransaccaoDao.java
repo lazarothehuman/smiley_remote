@@ -14,4 +14,6 @@ public interface TransaccaoDao {
 
 	List<Transaccao> find();
 
+	List<Transaccao> find(Long id, String nome, String codigo, Boolean active);
+
 }

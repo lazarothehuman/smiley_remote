@@ -51,5 +51,7 @@ public interface DataManager {
 	public Cliente findCliente(Long	id, String selectedCliente);
 	public User findUser(Long  id, String selectedUsuario);
 	public Medico findMedico(Long id , String selectedMedico);
+	public void updateTransaccao(Transaccao transaccao);
+	public List<Transaccao> findTransaccaos(Long id, String nome, String codigo, Boolean active);
 
 }

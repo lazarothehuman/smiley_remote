@@ -8,19 +8,19 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="700.0" prefWidth="400.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.forms.ModifyUserController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.forms.ModifyUserController">
    <children>
-      <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="83.0" prefWidth="400.0" style="-fx-background-color: #ea9400;" text="MODIFICAR  USUÁRIO" textAlignment="CENTER" textFill="WHITE">
+      <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="83.0" prefWidth="1100.0" style="-fx-background-color: #ea9400;" text="MODIFICAR  USUÁRIO" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <ImageView fx:id="add" fitHeight="58.0" fitWidth="59.0" layoutX="177.0" layoutY="612.0" onMouseClicked="#modify" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="add" fitHeight="58.0" fitWidth="59.0" layoutX="527.0" layoutY="628.0" onMouseClicked="#modify" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="icons8-plus-filled-100.png" />
          </image>
       </ImageView>
-      <VBox alignment="CENTER" layoutX="85.0" layoutY="107.0" prefHeight="486.0" prefWidth="231.0" spacing="60.0">
+      <VBox alignment="CENTER" layoutX="435.0" layoutY="95.0" prefHeight="486.0" prefWidth="231.0" spacing="60.0">
          <children>
             <JFXTextField fx:id="nomeTf" focusColor="#ea9400" layoutX="35.0" layoutY="117.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="180.0" prefHeight="39.0" prefWidth="231.0" promptText="Insira o nome" unFocusColor="#ea9400" />
             <JFXComboBox fx:id="comboPerfil" layoutX="40.0" layoutY="173.0" prefHeight="48.0" prefWidth="228.0" promptText="Insira o perfil" />

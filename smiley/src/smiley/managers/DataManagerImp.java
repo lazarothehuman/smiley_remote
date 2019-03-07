@@ -115,7 +115,6 @@ public class DataManagerImp implements DataManager {
 			endDate = calendar.getTime();
 		}
 		List<Cliente> list = clienteDao.findClients(id, nome, email, telefone, startDate, endDate, sexo, active);
-		list.sort(null);
 		return list;
 	}
 
@@ -254,6 +253,18 @@ public class DataManagerImp implements DataManager {
 		if (medico != null)
 			return medico;
 		return null;
+	}
+
+	@Override
+	public void updateTransaccao(Transaccao transaccao) {
+		if (transaccao != null) 
+			transaccaoDao.update(transaccao);
+		
+	}
+
+	@Override
+	public List<Transaccao> findTransaccaos(Long id, String nome, String codigo, Boolean active) {
+		return transaccaoDao.find(id,nome,codigo,active);
 	}
 
 }

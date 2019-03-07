@@ -14,11 +14,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 import smiley.managers.DataManager;
 import smiley.managers.DataManagerImp;
 import smiley.models.Profile;
 import smiley.models.User;
+import smiley.utils.AlertUtils;
+import smiley.utils.ApplicationUtils;
 
 public class ModifyUserController implements Initializable {
 
@@ -44,26 +45,25 @@ public class ModifyUserController implements Initializable {
 
 	@FXML
 	ImageView add;
+	
 
 	DataManager dataManager = new DataManagerImp();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		user = (User) ApplicationUtils.getObject("selectedUser");
 		comboPerfil.setItems(FXCollections.observableArrayList(dataManager.findProfiles(Boolean.TRUE)));
+		setValues();
 	}
 
-	public void setUser(User user) {
-		if (user != null) {
-			this.user = user;
-			setValues();
-		}
-	}
+	
 
 	public void setValues() {
 		if (this.user != null) {
 			nomeTf.setText(user.getName());
 			usernameTf.setText(user.getUsername());
 			comboPerfil.setValue(user.getProfile());
+			isActive.setSelected(user.isActive());
 		}
 	}
 
@@ -74,7 +74,6 @@ public class ModifyUserController implements Initializable {
 		String password = passwordTf.getText();
 		String repeat = repeatPasswordTf.getText();
 		Profile profile = comboPerfil.getSelectionModel().getSelectedItem();
-		if (this.user != null && this.user.getProfile().getId()!=3) {
 			if (nome != null && username != null && password != null && repeat != null && profile != null) {
 				if (password.equals(repeat)) {
 					this.user.setActive(true);
@@ -91,13 +90,7 @@ public class ModifyUserController implements Initializable {
 					} catch (GeneralSecurityException e) {
 						e.printStackTrace();
 					}
-					alert = new Alert(AlertType.INFORMATION);
-					alert.setTitle("Adicionado com sucesso");
-					alert.setHeaderText(null);
-					alert.setContentText("O usuário " + nome + " foi modificado com sucesso");
-					alert.showAndWait();
-					Stage stage = (Stage) add.getScene().getWindow();
-					stage.close();
+					AlertUtils.alertSucesso("User modificado com sucesso");
 				} else {
 					// alert que passwords tao diferentes
 					alert = new Alert(AlertType.ERROR);
@@ -107,13 +100,10 @@ public class ModifyUserController implements Initializable {
 				}
 
 			} else {
-				alert = new Alert(AlertType.ERROR);
-				alert.setContentText(
-						"Campos principais não preenchidos, impossível modificar o usuário " + this.user.getName());
-				alert.showAndWait();
+				AlertUtils.alertErroSelecionar("Campos principais não preenchidos, impossível modificar o usuário " + this.user.getName());
 				// alert.setTitle("");
 			}
-		}
+		
 	}
 
 	public void selectActive() {

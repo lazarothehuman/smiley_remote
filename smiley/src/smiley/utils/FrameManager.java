@@ -52,7 +52,7 @@ public class FrameManager {
 		}
 
 	}
-	
+
 	public void mainController2() {
 		Stage primaryStage = new Stage();
 		try {
@@ -77,7 +77,6 @@ public class FrameManager {
 
 	}
 
-
 	private void load(String url) {
 		Stage primaryStage = new Stage();
 		try {
@@ -89,7 +88,8 @@ public class FrameManager {
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Smiley");
-			//primaryStage.getIcons().add(new Image("frelimo.jpg"));// change to brilho dental
+			// primaryStage.getIcons().add(new Image("frelimo.jpg"));// change to brilho
+			// dental
 			primaryStage.show();
 			primaryStage.setResizable(false);
 		} catch (Exception e) {
@@ -97,7 +97,6 @@ public class FrameManager {
 		}
 
 	}
-
 
 	public void login() {
 		Stage primaryStage = new Stage();
@@ -168,7 +167,7 @@ public class FrameManager {
 				AlertUtils.alertSemPrivelegio();
 		}
 		return content;
-		
+
 	}
 
 	public AnchorPane addMedico(User user) {
@@ -182,21 +181,14 @@ public class FrameManager {
 				AlertUtils.alertSemPrivelegio();
 		}
 		return content;
-		
+
 	}
 
-	public AnchorPane addUser(User user) {
+	public AnchorPane addUser() {
 		AnchorPane content = null;
-		if (user != null) {
-			Profile profile = user.getProfile();
-			Transaccao transaction = dataManager.findTransaccao(104l);
-			if (transaction.getProfiles().contains(profile))
-				content = loadContent(transaction.getUrl());
-			else
-				AlertUtils.alertSemPrivelegio();
-		}
+		content = loadContent("/application/forms/Add-User.fxml");
 		return content;
-		
+
 	}
 
 	public AnchorPane modifyProcedimento(Procedimento selectedProcedimento, User user) {
@@ -210,7 +202,7 @@ public class FrameManager {
 				AlertUtils.alertSemPrivelegio();
 		}
 		return content;
-		
+
 	}
 
 	public AnchorPane addConsulta(User user) {
@@ -225,7 +217,6 @@ public class FrameManager {
 		}
 		return content;
 	}
-
 
 	public AnchorPane viewConsultas(User user) {
 		AnchorPane content = null;
@@ -251,7 +242,7 @@ public class FrameManager {
 				AlertUtils.alertSemPrivelegio();
 		}
 		return content;
-		
+
 	}
 
 	public AnchorPane viewClientes(User user) {
@@ -278,5 +269,65 @@ public class FrameManager {
 				AlertUtils.alertSemPrivelegio();
 		}
 		return content;
+	}
+
+	public AnchorPane modifyUser() {
+		AnchorPane content = loadContent("/application/forms/Modify-User.fxml");
+		return content;
+	}
+
+	public AnchorPane modifyCliente() {
+		AnchorPane content = loadContent("/application/forms/Modify-Client.fxml");
+		return content;
+	}
+
+	public AnchorPane viewTransaccoes(User user) {
+		AnchorPane content = null;
+		if (user != null) {
+			Profile profile = user.getProfile();
+			Transaccao transaction = dataManager.findTransaccao(309l);
+			if (transaction.getProfiles().contains(profile))
+				content = loadContent(transaction.getUrl());
+			else
+				AlertUtils.alertSemPrivelegio();
+		}
+		return content;
+	}
+
+	public AnchorPane viewPerfis(User user) {
+		AnchorPane content = null;
+		if (user != null) {
+			Profile profile = user.getProfile();
+			Transaccao transaction = dataManager.findTransaccao(308l);
+			if (transaction.getProfiles().contains(profile))
+				content = loadContent(transaction.getUrl());
+			else
+				AlertUtils.alertSemPrivelegio();
+		}
+		return content;
+	}
+
+	public AnchorPane viewUsers(User user) {
+		AnchorPane content = null;
+		if (user != null) {
+			Profile profile = user.getProfile();
+			Transaccao transaction = dataManager.findTransaccao(302l);
+			if (transaction.getProfiles().contains(profile))
+				content = loadContent(transaction.getUrl());
+			else
+				AlertUtils.alertSemPrivelegio();
+		}
+		return content;
+	}
+
+	public AnchorPane addTransaccao() {
+		AnchorPane content = loadContent("/application/views/settings/Add-Transaccao.fxml");
+		return content;
+	}
+
+	public AnchorPane modifyTransaccao() {
+		AnchorPane content = loadContent("/application/views/settings/Modify-Transaccao.fxml");
+		return content;
+
 	}
 }

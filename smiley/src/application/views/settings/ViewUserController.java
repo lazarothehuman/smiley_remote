@@ -1,4 +1,4 @@
-package application.views;
+package application.views.settings;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
@@ -26,11 +26,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import smiley.managers.DataManager;
 import smiley.managers.DataManagerImp;
 import smiley.models.Profile;
 import smiley.models.User;
+import smiley.utils.AlertUtils;
+import smiley.utils.ApplicationUtils;
 import smiley.utils.FrameManager;
 
 public class ViewUserController implements Initializable {
@@ -93,6 +96,11 @@ public class ViewUserController implements Initializable {
 	@FXML
 	Hyperlink about;
 
+	@FXML
+	AnchorPane ContentPane;
+
+	User user;
+
 	List<User> listUsers = new ArrayList<User>();
 
 	@Override
@@ -103,11 +111,7 @@ public class ViewUserController implements Initializable {
 			strings.add(profile.getProfilename());
 		}
 		comboProfile.setItems(FXCollections.observableArrayList(strings));
-		User user = dataManager.findCurrentUser();
-		if (user != null) {
-			lblUser.setText(user.getName().toLowerCase());
-			lblProfile.setText(user.getProfile().getProfilename());
-		}
+		user = dataManager.findCurrentUser();
 		nomeColumn.setCellValueFactory(new PropertyValueFactory<User, String>("name"));
 		usernameColumn.setCellValueFactory(new PropertyValueFactory<User, String>("username"));
 		profileColumn.setCellValueFactory(new PropertyValueFactory<User, String>("profile"));
@@ -117,7 +121,6 @@ public class ViewUserController implements Initializable {
 	public void pesquisar() {
 		String name = nomeTf.getText();
 		String username = usernameTf.getText();
-		// Profile profile = comboProfile.getValue();
 		String string = comboProfile.getValue();
 		Profile profile = dataManager.findProfile(string);
 		Boolean active = true;
@@ -129,23 +132,16 @@ public class ViewUserController implements Initializable {
 			tableUser.setItems(FXCollections.observableArrayList(listUsers));
 			lblTotal.setText(listUsers.size() + "");
 		}
-		
+
 	}
 
 	public void addUser() {// fazer controle de permissoes
 		User user = dataManager.findCurrentUser();
 		if (user != null) {
-			if (user.getProfile().getId() == 1l || user.getProfile().getId() == 2l)
-				frameManager.addUser(user);
-			else {
-				Alert alert = new Alert(AlertType.ERROR);
-				alert.setHeaderText(null);
-				alert.setTitle("Erro de permissão");
-				alert.setContentText("O usuário corrente não tem permissão para adicionar a tarefa em causa");
-				alert.showAndWait();
-			}
-
+			AnchorPane content = frameManager.addUser();
+			setContent(content);
 		}
+
 	}
 
 	public void modifyUser() {// fazer controle de permissoes
@@ -153,32 +149,16 @@ public class ViewUserController implements Initializable {
 		User selectedUser = null;
 		selectedUser = tableUser.getSelectionModel().getSelectedItem();
 
-		User user = dataManager.findCurrentUser();
-		if (user != null) {
-			if (user.getProfile().getId() == 1l || user.getProfile().getId() == 2l) {
-				if (selectedUser != null)
-					System.out.println();
-					//frameManager.modifyUser(selectedUser,dataManager.findCurrentUser());
-				else {
-					Alert alert = new Alert(AlertType.ERROR);
-					alert.setTitle("Operação inválida");
-					alert.setContentText("Para modificar um usuario é necessário selecionar um!");
-					alert.setHeaderText(null);
-					alert.showAndWait();
-				}
-			} else {
-				Alert alert = new Alert(AlertType.ERROR);
-				alert.setHeaderText(null);
-				alert.setTitle("Erro de permissão");
-				alert.setContentText("O usuário corrente não tem permissão para adicionar a tarefa em causa");
-				alert.showAndWait();
-			}
+		if (selectedUser != null) {
+			ApplicationUtils.add("selectedUser", selectedUser);
+			AnchorPane pane = frameManager.modifyUser();
+			setContent(pane);
+		} else
+			AlertUtils.alertErroSelecionar("Para modificar um usuario é necessário selecionar um!");
 
-		}
 	}
 
 	public void removerUser() throws UnsupportedEncodingException, GeneralSecurityException {
-		User user = dataManager.findCurrentUser();
 		if (user != null) {
 			if (user.getProfile().getId() == 1l || user.getProfile().getId() == 2l) {
 				User selectedUser = null;
@@ -198,15 +178,8 @@ public class ViewUserController implements Initializable {
 					}
 
 				}
-			} else {
-				Alert alert = new Alert(AlertType.ERROR);
-				alert.setHeaderText(null);
-				alert.setTitle("Erro de permissão");
-				alert.setContentText("O usuário corrente não tem permissão para adicionar a tarefa em causa");
-				alert.showAndWait();
-
-			}
-
+			} else
+				AlertUtils.alertSemPrivelegio();
 		}
 
 	}
@@ -217,32 +190,25 @@ public class ViewUserController implements Initializable {
 
 	}
 
-	public void goHome() {
-		Stage stage = (Stage) adicionarUser.getScene().getWindow();
-		stage.close();
-	}
-
-	public void about() {
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Sobre esta janela");
-		alert.setContentText("Esta janela tem objectivo de ajudar a visualizar todos "
-				+ "os usuários gravados no sistema. Do lado direito da tela vais encontrar um conjunto de filtros, "
-				+ "preencha os para uma busca mais refinada. Para sair desta tela, apenas prima voltar ou "
-				+ "no canto superior direito para tirar a janela. Nesta janela também é possível adicionar, modificar e remover um usuário. "
-				+ "Para voltar para janela principal, é necessário clicar no  HOME ou no x no canto superior a direita");
-		alert.setHeaderText(null);
-		alert.showAndWait();
-	}
-	
 	public void doubleClickOnUser(MouseEvent event) {
 		if (event.getClickCount() == 2) {
 			modifyUser();
 		}
 	}
-	
+
 	public void enterKeyPressed(KeyEvent event) {
-		if(event.getCode()== KeyCode.ENTER)
+		if (event.getCode() == KeyCode.ENTER)
 			pesquisar();
+	}
+
+	public void setContent(AnchorPane content) {
+		if (content != null) {
+			ContentPane.setTopAnchor(content, 0.0);
+			ContentPane.setLeftAnchor(content, 0.0);
+			ContentPane.setBottomAnchor(content, 0.0);
+			ContentPane.setRightAnchor(content, 0.0);
+			ContentPane.getChildren().setAll(content);
+		}
 	}
 
 }

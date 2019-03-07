@@ -5,8 +5,6 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -66,41 +64,19 @@ public class MainController2 implements Initializable {
 
 	public void setContextMenu() {
 		user = dataManager.findCurrentUser();
-		MenuItem addProcedimento = new MenuItem("Adicionar procedimento");
-		MenuItem viewProcedimentos = new MenuItem("Visualizar todos procedimentos");
-		final ContextMenu contexMenuProcedimento = new ContextMenu();
-		contexMenuProcedimento.getItems().addAll(addProcedimento, viewProcedimentos);
-		addProcedimento.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				addProcedimento();
-			}
-		});
-		viewProcedimentos.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				viewProcedimentos();
-			}
-		});
-		procedimentosBtn.setContextMenu(contexMenuProcedimento);
 		
-		MenuItem addCliente = new MenuItem("Adicionar cliente");
-		MenuItem viewClientes = new MenuItem("Visualizar todos clientes");
-		final ContextMenu contextMenuCliente = new ContextMenu();
-		contextMenuCliente.getItems().addAll(addCliente, viewClientes);
-		addCliente.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				addCliente();
-			}
-		});
-		viewClientes.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				viewCliente();
-			}
-		});
-		clienteBtn.setContextMenu(contextMenuCliente);
+		MenuItem usersItem = new MenuItem("Usuarios");
+		MenuItem perfisItem = new MenuItem("Perfis");
+		MenuItem transacoesItems = new MenuItem("Transaccoes");
+		final ContextMenu contextSettings = new ContextMenu();
+		contextSettings.getItems().addAll(usersItem, perfisItem, transacoesItems);
+		
+		usersItem.setOnAction(event -> viewUsers());
+		perfisItem.setOnAction(event -> viewPerfis());
+		transacoesItems.setOnAction(event -> viewTransaccoes());
+		
+		settingsButton.setContextMenu(contextSettings);
+		
 /*
 		MenuItem addUser = new MenuItem("Adicionar usuário");
 		MenuItem viewUser = new MenuItem("Visualizar todos usuários");
@@ -164,6 +140,7 @@ public class MainController2 implements Initializable {
 		setContent(content);
 	}*/
 
+
 	public void viewProcedimentos() {
 		AnchorPane content = frameManager.viewProcedimentos(user);
 		setContent(content);
@@ -204,6 +181,23 @@ public class MainController2 implements Initializable {
 			ContentPane.setRightAnchor(content, 0.0);
 			ContentPane.getChildren().setAll(content);
 		}
+	}
+	
+	public void viewUsers() {
+		AnchorPane content = frameManager.viewUsers(user);
+		setContent(content);
+		
+	}
+	
+	public void viewPerfis() {
+		AnchorPane content = frameManager.viewPerfis(user);
+		setContent(content);
+		
+	}
+	
+	public void viewTransaccoes() {
+		AnchorPane content = frameManager.viewTransaccoes(user);
+		setContent(content);	
 	}
 
 

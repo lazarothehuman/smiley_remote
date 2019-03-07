@@ -1,0 +1,31 @@
+* {
+	-fx-primary: #ea9400;
+	-fx-secondary: #ffffff;
+	-fx-primarytext: #ea9400;
+}
+
+.root {
+	-fx-background-color: -fx-secondary;
+}
+
+.button {
+	-fx-text-fill: -fx-primarytext;
+	-fx-border-color: -fx-primary;
+	-fx-background-color: -fx-secondary;
+	-fx-border-radius:20px;
+	-fx-background-radius:20px;	
+}
+
+.button:hover{
+	-fx-background-color: -fx-primary;
+	-fx-text-fill: -fx-secondary;
+	
+}
+
+.text-field {
+	-fx-text-fill: -fx-primary;
+	-jfx-focus-color: -fx-primary;
+	-fx-font-size: 14pt;
+}
+
+

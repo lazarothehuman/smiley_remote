@@ -1,0 +1,7 @@
+.buttonMenu:hover{
+    -fx-font-size: 14px; 
+}
+
+.buttonSubMenu:hover{
+   -fx-background-color:  #5C6A8E;
+}

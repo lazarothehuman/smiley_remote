@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="ContentPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.settings.ViewPerfisController">
+   <children>
+      <SplitPane dividerPositions="0.06446991404011461" layoutX="169.0" layoutY="28.0" orientation="VERTICAL" prefHeight="700.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="69.0" prefWidth="1100.0" style="-fx-background-color: #000000;">
+               <children>
+                  <Label alignment="TOP_CENTER" layoutY="6.0" prefHeight="81.0" prefWidth="1100.0" style="-fx-background-color: #ea9400;" text=" Visualizar Perfis" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font size="30.0" />
+                     </font></Label>
+                  
+               </children></AnchorPane>
+          <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="1100.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <TableView fx:id="tableProcedimentos" layoutY="94.0" prefHeight="291.0" prefWidth="611.0" style="-fx-border-width: 2; -fx-border-color: #000000;" stylesheets="@../padrao.css" AnchorPane.leftAnchor="0.0">
+                    <columns>
+                      <TableColumn fx:id="codigoColumn" prefWidth="319.0" text="Nome" />
+                      <TableColumn fx:id="nomeColumn" prefWidth="285.0" text="Active" />
+                    </columns>
+                  </TableView>
+                  <HBox layoutX="21.0" layoutY="590.0" spacing="7.0" style="-fx-padding: 5; -fx-background-insets: 5; -fx-border-insets: 5;">
+                     <children>
+                        <JFXButton layoutX="34.0" layoutY="472.0" onAction="#addProcedimento" style="-fx-background-color: #ea9400;" text="Adicionar novo perfil" textFill="WHITE" />
+                        <JFXButton layoutX="184.0" layoutY="472.0" style="-fx-background-color: #ea9400;" text="Modificar perfil" textFill="WHITE" />
+                        <JFXButton layoutX="306.0" layoutY="472.0" onAction="#remover" style="-fx-background-color: #ea9400;" text="Remover perfil" textFill="WHITE" />
+                     </children>
+                  </HBox>
+                  <Label layoutX="423.0" layoutY="398.0" text="Total de itens na procura:">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblTotal" layoutX="581.0" layoutY="398.0" text="0" />
+                  <Label layoutX="632.0" layoutY="28.0" text="Transações associadas">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <JFXListView layoutX="632.0" layoutY="94.0" prefHeight="291.0" prefWidth="248.0" />
+                  <Label layoutX="14.0" layoutY="28.0" text="Lista de perfis">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
