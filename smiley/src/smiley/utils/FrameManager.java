@@ -170,18 +170,19 @@ public class FrameManager {
 
 	}
 
-	public AnchorPane addMedico(User user) {
-		AnchorPane content = null;
-		if (user != null) {
-			Profile profile = user.getProfile();
-			Transaccao transaction = dataManager.findTransaccao(104l);
-			if (transaction.getProfiles().contains(profile))
-				content = loadContent(transaction.getUrl());
-			else
-				AlertUtils.alertSemPrivelegio();
-		}
+	public AnchorPane addMedico() {
+		AnchorPane content = loadContent("/application/forms/Add-Medico.fxml");
 		return content;
-
+	}
+	
+	public AnchorPane modifyMedico() {
+		AnchorPane content = loadContent("/application/forms/Modify-Medico.fxml");
+		return content;
+	}
+	
+	public AnchorPane viewMedicoPerfil() {
+		AnchorPane content = loadContent("/application/views/View-Medico-Profile.fxml");
+		return content;
 	}
 
 	public AnchorPane addUser() {
@@ -328,6 +329,41 @@ public class FrameManager {
 	public AnchorPane modifyTransaccao() {
 		AnchorPane content = loadContent("/application/views/settings/Modify-Transaccao.fxml");
 		return content;
+	}
 
+	public AnchorPane addProfile() {
+		AnchorPane content = loadContent("/application/forms/Add-Profile.fxml");
+		return content;
+	}
+
+	public AnchorPane modifyProfile() {
+		AnchorPane content = loadContent("/application/forms/Modify-Profile.fxml");
+		return content;
+	}
+
+	public AnchorPane viewProfiles(User user) {
+		AnchorPane content = null;
+		if (user != null) {
+			Profile profile = user.getProfile();
+			Transaccao transaction = dataManager.findTransaccao(308l);
+			if (transaction.getProfiles().contains(profile))
+				content = loadContent(transaction.getUrl());
+			else
+				AlertUtils.alertSemPrivelegio();
+		}
+		return content;
+	}
+
+	public AnchorPane viewMedicos(User user) {
+		AnchorPane content = null;
+		if (user != null) {
+			Profile profile = user.getProfile();
+			Transaccao transaction = dataManager.findTransaccao(303l);
+			if (transaction.getProfiles().contains(profile))
+				content = loadContent(transaction.getUrl());
+			else
+				AlertUtils.alertSemPrivelegio();
+		}
+		return content;
 	}
 }

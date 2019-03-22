@@ -11,6 +11,7 @@ public interface ProfileDao {
 	List<Profile> findProfiles();
 	Profile findByName(String name);
 	void update(Profile profile);
+	List<Profile> findProfiles(String nome, boolean active);
 	
 
 }

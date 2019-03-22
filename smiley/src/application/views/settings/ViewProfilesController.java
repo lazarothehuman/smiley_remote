@@ -25,119 +25,119 @@ import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 import smiley.managers.DataManager;
 import smiley.managers.DataManagerImp;
-import smiley.models.Transaccao;
-import smiley.models.User;
+import smiley.models.Profile;
 import smiley.utils.AlertUtils;
 import smiley.utils.ApplicationUtils;
 import smiley.utils.FrameManager;
 
-public class ViewTransaccoesController implements Initializable {
-
-	@FXML
-	AnchorPane ContentPane;
+public class ViewProfilesController implements Initializable {
 
 	@FXML
 	Label lblTotal;
 
 	@FXML
-	TableView<Transaccao> tableTransaccoes;
+	TableView<Profile> tableProfiles;
 
 	@FXML
-	TableColumn<Transaccao, String> activeColumn;
+	AnchorPane ContentPane;
 
 	@FXML
-	TableColumn<Transaccao, String> codigoColumn;
+	TableColumn<Profile, String> nomeColumn;
 
 	@FXML
-	TableColumn<Transaccao, String> urlColumn;
+	TableColumn<Profile, String> numeroTransacoes;
+
+	@FXML
+	TableColumn<Profile, String> activeColumn;
 
 	@FXML
 	TextField nome;
 
 	@FXML
-	TextField codigo;
-
-	@FXML
 	CheckBox actives;
 
-	List<Transaccao> transacaosModelList = new ArrayList<>();
+	List<Profile> profilesModelList = new ArrayList<>();
 
 	FrameManager frameManager = new FrameManager();
 	DataManager dataManager = new DataManagerImp();
-	User user;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		nomeColumn.setCellValueFactory(new PropertyValueFactory<Profile, String>("profilename"));
+		numeroTransacoes.setCellValueFactory(
+				new Callback<TableColumn.CellDataFeatures<Profile, String>, ObservableValue<String>>() {
+					@Override
+					public ObservableValue<String> call(CellDataFeatures<Profile, String> param) {
+						return new SimpleStringProperty(param.getValue().getTransaccoes().size() + "");
+					}
+				});
 		activeColumn.setCellValueFactory(
-				new Callback<TableColumn.CellDataFeatures<Transaccao, String>, ObservableValue<String>>() {
+				new Callback<TableColumn.CellDataFeatures<Profile, String>, ObservableValue<String>>() {
 
 					@Override
-					public ObservableValue<String> call(CellDataFeatures<Transaccao, String> param) {
-						if (param.getValue().getActive())
+					public ObservableValue<String> call(CellDataFeatures<Profile, String> param) {
+						if(param.getValue().isActive())
 							return new SimpleStringProperty("Sim");
 						else
 							return new SimpleStringProperty("Não");
+
 					}
 				});
-		codigoColumn.setCellValueFactory(new PropertyValueFactory<Transaccao, String>("code"));
-		urlColumn.setCellValueFactory(new PropertyValueFactory<Transaccao, String>("url"));
-		user = dataManager.findCurrentUser();
 
 	}
 
 	public void pesquisar() {
 		String selectedNome = nome.getText();
-		String selectedCodigo = codigo.getText();
-		transacaosModelList = dataManager.findTransaccaos(null, selectedNome, selectedCodigo, !actives.isSelected());
-		if (transacaosModelList != null)
+		profilesModelList = dataManager.findProfiles(selectedNome, !actives.isSelected());
+		if (profilesModelList != null)
 			refreshItems();
 		else
 			AlertUtils.pesquisaVazia();
 
 	}
 
-	public void addTransaccao() {
-		AnchorPane content = frameManager.addTransaccao();
-		if (content != null)
+	public void addProfile() {
+		AnchorPane content = frameManager.addProfile();
+		if (content != null) {
 			setContent(content);
+		}
 
 	}
 
 	public void modify() {
-		Transaccao selectedTransaccao = null;
-		selectedTransaccao = tableTransaccoes.getSelectionModel().getSelectedItem();
-		if (selectedTransaccao != null) {
-			ApplicationUtils.add("selectedTransaccao", selectedTransaccao);
-			AnchorPane content = frameManager.modifyTransaccao();
+		Profile selectedProfile = null;
+		selectedProfile = tableProfiles.getSelectionModel().getSelectedItem();
+		if (selectedProfile != null) {
+			ApplicationUtils.add("profile", selectedProfile);
+			AnchorPane content = frameManager.modifyProfile();
 			if (content != null)
 				setContent(content);
-
 		}
 
 	}
 
 	public void remover() {
-		Transaccao selectedTransaccao = null;
-		selectedTransaccao = tableTransaccoes.getSelectionModel().getSelectedItem();
-		if (selectedTransaccao != null) {
+		Profile selectedProfile = null;
+		selectedProfile = tableProfiles.getSelectionModel().getSelectedItem();
+		if (selectedProfile != null) {
 			Alert alert = new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("Confirmação de remoção");
 			alert.setHeaderText(null);
-			alert.setContentText("Tem certeza que deseja remover o transacao?" + selectedTransaccao.getCode());
+			alert.setContentText("Tem certeza que deseja remover o profile?" + selectedProfile.getProfilename());
 			Optional<ButtonType> result = alert.showAndWait();
 			if (result.get() == ButtonType.OK) {
-				selectedTransaccao.setActive(false);
-				transacaosModelList.remove(selectedTransaccao);
-				dataManager.updateTransaccao(selectedTransaccao);
+				selectedProfile.setActive(false);
+				profilesModelList.remove(selectedProfile);
+				dataManager.updateProfile(selectedProfile);
 				refreshItems();
 			}
 		}
 	}
 
 	private void refreshItems() {
-		if (transacaosModelList != null) {
-			tableTransaccoes.setItems(FXCollections.observableArrayList(transacaosModelList));
-			lblTotal.setText(transacaosModelList.size() + "");
+		if (profilesModelList != null) {
+			tableProfiles.setItems(FXCollections.observableArrayList(profilesModelList));
+			lblTotal.setText(profilesModelList.size() + "");
 		}
 
 	}

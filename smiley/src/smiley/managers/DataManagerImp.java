@@ -267,4 +267,17 @@ public class DataManagerImp implements DataManager {
 		return transaccaoDao.find(id,nome,codigo,active);
 	}
 
+	@Override
+	public List<Profile> findProfiles(String nome, boolean active) {
+		return profileDao.findProfiles(nome,active);
+	}
+
+	@Override
+	public void createTransaccao(Transaccao transaccao) {
+		if (transaccao != null) {
+			transaccaoDao.create(transaccao);
+		}
+		
+	}
+
 }

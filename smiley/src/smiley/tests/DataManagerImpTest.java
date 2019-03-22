@@ -33,9 +33,9 @@ public class DataManagerImpTest {
 		profile.addTransaction(transaccao);
 		dataManager.updateProfile(profile);
 		Assert.assertNotNull(transaccao.getId());
-		
-
 	}
+	
+	
 	
 	@Test
 	public void insertTransactionIntoProfileTest() {
@@ -207,6 +207,13 @@ public class DataManagerImpTest {
 		Assert.assertNotNull(geting);
 		Assert.assertEquals(user.getName(), geting.getName());
 		
+	}
+	
+	@Test
+	public void findProfilesWithParametersTest() {
+		List<Profile> profiles = dataManager.findProfiles("Administrador", false);
+		Assert.assertNull(profiles);
+		//Assert.assertEquals(0, profiles.size());
 	}
 	
 	

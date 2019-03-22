@@ -24,6 +24,7 @@ import smiley.managers.DataManagerImp;
 import smiley.models.Cliente;
 import smiley.models.Encarregado;
 import smiley.models.Sexo;
+import smiley.utils.ApplicationUtils;
 import smiley.utils.FormatUtils;
 import smiley.utils.Validations;
 
@@ -85,10 +86,6 @@ public class ModifyClientController implements Initializable {
 
 	DataManager dataManager = new DataManagerImp();
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-		setValues();
-	}
 
 	public void setValues() {
 
@@ -253,6 +250,8 @@ public class ModifyClientController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		cliente = (Cliente) ApplicationUtils.take("selectedCliente");
+		setValues();
 		comboSex.setItems(FXCollections.observableArrayList(Sexo.values()));
 	}
 

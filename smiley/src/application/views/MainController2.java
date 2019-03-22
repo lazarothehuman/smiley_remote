@@ -34,6 +34,9 @@ public class MainController2 implements Initializable {
 
 	@FXML
 	Button settingsButton;
+	
+	@FXML
+	Button brilhoDentalBtn;
 
 	@FXML
 	JFXButton registar;
@@ -64,6 +67,18 @@ public class MainController2 implements Initializable {
 
 	public void setContextMenu() {
 		user = dataManager.findCurrentUser();
+		
+		MenuItem medicosItem = new MenuItem("Medicos");
+		MenuItem clientesItem = new MenuItem("Clientes");
+		MenuItem procedimentoItem = new MenuItem("Procedimentos");
+		final ContextMenu contextBrilhoDental = new ContextMenu();
+		contextBrilhoDental.getItems().addAll(medicosItem, clientesItem, procedimentoItem);
+		
+		medicosItem.setOnAction(event-> viewMedicos());
+		clientesItem.setOnAction(event-> viewClientes());
+		procedimentoItem.setOnAction(event-> viewProcedimentos());
+		
+		brilhoDentalBtn.setContextMenu(contextBrilhoDental);
 		
 		MenuItem usersItem = new MenuItem("Usuarios");
 		MenuItem perfisItem = new MenuItem("Perfis");
@@ -170,8 +185,11 @@ public class MainController2 implements Initializable {
 		AnchorPane content = frameManager.viewConsultas(user);
 		setContent(content);
 	}
-
-
+	
+	public void viewProfiles() {
+		AnchorPane content = frameManager.viewProfiles(user);
+		setContent(content);
+	}
 
 	public void setContent(AnchorPane content) {
 		if (content != null) {
@@ -200,8 +218,14 @@ public class MainController2 implements Initializable {
 		setContent(content);	
 	}
 
-
-
+	public void viewMedicos() {
+		AnchorPane content = frameManager.viewMedicos(user);
+		setContent(content);
+	}
+	
+	public void viewClientes() {
+		
+	}
 	public void refreshContent() {
 		if (content != null)
 			setContent(content);

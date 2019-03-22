@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="400.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.forms.AddProfileController">
+   <children>
+      <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #ea9400;" text="ADICIONAR PERFIL" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <VBox alignment="CENTER" layoutX="56.0" layoutY="145.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="510.0" prefWidth="288.0" spacing="85.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="298.0" spacing="15.0">
+               <children>
+                  <Label fx:id="nome_lbl" text="Nome:" textFill="RED" />
+                  <JFXTextField fx:id="profilename" focusColor="#ea9400" layoutX="45.0" layoutY="161.0" maxWidth="231.0" minWidth="180.0" prefHeight="35.0" prefWidth="215.0" promptText="Insira o nome" unFocusColor="#ea9400" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <JFXButton layoutX="165.0" layoutY="739.0" onAction="#add" style="-fx-background-color: #ea9400;" text="SALVAR" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

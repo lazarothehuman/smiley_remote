@@ -16,6 +16,7 @@ import smiley.managers.DataManager;
 import smiley.managers.DataManagerImp;
 import smiley.models.Profile;
 import smiley.models.Transaccao;
+import smiley.utils.ApplicationUtils;
 
 public class ModifyProfileController implements Initializable {
 
@@ -42,35 +43,24 @@ public class ModifyProfileController implements Initializable {
 	@FXML
 	TableColumn<Transaccao, String> selectedColumn;
 
+	@FXML
+	private TextField profilename;
 
 	DataManager dataManager = new DataManagerImp();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		//selectedColumn.setCellValueFactory(selectedFactory);
+		// selectedColumn.setCellValueFactory(selectedFactory);
 		selectedColumn.setCellValueFactory(new PropertyValueFactory<Transaccao, String>("select"));
-		List<Transaccao> transaccoes = dataManager.findAllTransaccoes();
+		profile = (Profile) ApplicationUtils.getObject("profile");
+		profilename.setText(profile.getProfilename());
 		// if(t)
 
 		codeColumn.setCellValueFactory(new PropertyValueFactory<Transaccao, Long>("code"));
 		urlColumn.setCellValueFactory(new PropertyValueFactory<Transaccao, String>("url"));
 		activeColumn.setCellValueFactory(new PropertyValueFactory<Transaccao, Boolean>("active"));
-		transaccoesTable.setItems(FXCollections.observableArrayList(transaccoes));
-	}
-
-	public void setProfile(Profile profile) {
-		if (profile != null) {
-			this.profile = profile;
-			setValues();
-		}
-	}
-
-	private void setValues() {
-		if (this.profile != null) {
-			profileNameLbl.setText(profile.getProfilename());
-		}
-
+		transaccoesTable.setItems(FXCollections.observableArrayList(profile.getTransaccoes()));
 	}
 
 }

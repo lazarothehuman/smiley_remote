@@ -8,14 +8,14 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="700.0" prefWidth="400.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.forms.ModifyMedicoController">
+<AnchorPane fx:id="ContentPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.forms.ModifyMedicoController">
    <children>
-      <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="400.0" style="-fx-background-color: #ea9400;" text="MODIFICAR MÉDICO" textAlignment="CENTER" textFill="WHITE">
+      <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="400.0" style="-fx-background-color: #ea9400;" text="MODIFICAR MÉDICO" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <VBox alignment="CENTER" layoutX="38.0" layoutY="124.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="474.0" prefWidth="324.0" spacing="60.0">
+      <VBox alignment="CENTER" layoutX="388.0" layoutY="113.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="474.0" prefWidth="324.0" spacing="60.0">
          <children>
             <JFXTextField fx:id="nameTF" focusColor="#ea9400" layoutX="45.0" layoutY="161.0" maxWidth="280.0" minWidth="180.0" prefHeight="41.0" prefWidth="280.0" promptText="Insira o nome" unFocusColor="#ea9400" />
             <JFXComboBox fx:id="comboSex" prefHeight="34.0" prefWidth="279.0" promptText="Insira o gênero " />
@@ -25,7 +25,7 @@
             <CheckBox fx:id="isActive" mnemonicParsing="false" prefHeight="29.0" prefWidth="55.0" text="Activo" />
          </children>
       </VBox>
-      <ImageView fx:id="add" fitHeight="58.0" fitWidth="59.0" layoutX="176.0" layoutY="628.0" onMouseClicked="#modify" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="add" fitHeight="58.0" fitWidth="59.0" layoutX="526.0" layoutY="616.0" onMouseClicked="#modify" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="icons8-plus-filled-100.png" />
          </image>

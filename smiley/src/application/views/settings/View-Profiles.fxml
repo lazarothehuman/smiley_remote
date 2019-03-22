@@ -8,13 +8,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="ContentPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.settings.ViewTransaccoesController">
+<AnchorPane fx:id="ContentPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.settings.ViewProfilesController">
    <children>
       <SplitPane dividerPositions="0.06446991404011461" layoutX="169.0" layoutY="28.0" orientation="VERTICAL" prefHeight="700.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="69.0" prefWidth="1100.0" style="-fx-background-color: #000000;">
                <children>
-                  <Label alignment="TOP_CENTER" layoutY="6.0" prefHeight="81.0" prefWidth="1100.0" style="-fx-background-color: #ea9400;" text=" Visualizar Transacoes" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Label alignment="TOP_CENTER" layoutY="6.0" prefHeight="81.0" prefWidth="1100.0" style="-fx-background-color: #ea9400;" text=" Visualizar Perfis" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
                         <Font size="30.0" />
                      </font></Label>
@@ -22,11 +22,11 @@
                </children></AnchorPane>
           <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="1100.0" style="-fx-background-color: #ffffff;">
                <children>
-                  <TableView fx:id="tableTransaccoes" layoutX="113.0" layoutY="95.0" prefHeight="465.0" prefWidth="880.0" style="-fx-border-width: 2; -fx-border-color: #000000;" stylesheets="@../padrao.css" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="tableProfiles" prefHeight="465.0" prefWidth="880.0" style="-fx-border-width: 2; -fx-border-color: #000000;" stylesheets="@../padrao.css" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn fx:id="codigoColumn" prefWidth="179.0" text="Código" />
-                      <TableColumn fx:id="urlColumn" prefWidth="490.0" text="URL" />
-                        <TableColumn fx:id="activeColumn" minWidth="0.0" prefWidth="205.0" text="Activo" />
+                      <TableColumn fx:id="nomeColumn" prefWidth="419.0" text="Nome" />
+                        <TableColumn fx:id="numeroTransacoes" minWidth="0.0" prefWidth="271.0" text="Nº Transações" />
+                        <TableColumn fx:id="activeColumn" minWidth="0.0" prefWidth="180.0" text="Activo" />
                     </columns>
                   </TableView>
                   <VBox alignment="CENTER" layoutX="880.0" layoutY="79.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="442.0" prefWidth="219.0" spacing="25.0" AnchorPane.bottomAnchor="129.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="79.0">
@@ -37,21 +37,15 @@
                               <TextField fx:id="nome" layoutX="1145.0" layoutY="46.0" maxHeight="-Infinity" maxWidth="-Infinity" />
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="1082.0" layoutY="88.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="193.0" spacing="5.0" VBox.vgrow="NEVER">
-                           <children>
-                              <Label layoutX="1082.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="17.0" prefWidth="48.0" text="Código" />
-                              <TextField fx:id="codigo" layoutX="1145.0" layoutY="46.0" />
-                           </children>
-                        </HBox>
                         <CheckBox fx:id="actives" layoutX="1083.0" layoutY="256.0" mnemonicParsing="false" text="Mostrar inactivos" />
                         <JFXButton layoutX="1108.0" layoutY="299.0" onAction="#pesquisar" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #ea9400;" text="Pesquisar" textFill="WHITE" />
                      </children>
                   </VBox>
                   <HBox layoutX="21.0" layoutY="590.0" spacing="7.0" style="-fx-padding: 5; -fx-background-insets: 5; -fx-border-insets: 5;">
                      <children>
-                        <JFXButton layoutX="34.0" layoutY="472.0" onAction="#addTransaccao" style="-fx-background-color: #ea9400;" text="Adicionar novo transacao" textFill="WHITE" />
-                        <JFXButton layoutX="184.0" layoutY="472.0" onAction="#modify" style="-fx-background-color: #ea9400;" text="Modificar transacao" textFill="WHITE" />
-                        <JFXButton layoutX="306.0" layoutY="472.0" onAction="#remover" style="-fx-background-color: #ea9400;" text="Remover transacao" textFill="WHITE" />
+                        <JFXButton layoutX="34.0" layoutY="472.0" onAction="#addProfile" style="-fx-background-color: #ea9400;" text="Adicionar novo perfil" textFill="WHITE" />
+                        <JFXButton layoutX="184.0" layoutY="472.0" onAction="#modify" style="-fx-background-color: #ea9400;" text="Modificar perfil" textFill="WHITE" />
+                        <JFXButton layoutX="306.0" layoutY="472.0" onAction="#remover" style="-fx-background-color: #ea9400;" text="Remover perfil" textFill="WHITE" />
                      </children>
                   </HBox>
                   <Label layoutX="697.0" layoutY="599.0" text="Total de itens na procura:">

@@ -53,5 +53,7 @@ public interface DataManager {
 	public Medico findMedico(Long id , String selectedMedico);
 	public void updateTransaccao(Transaccao transaccao);
 	public List<Transaccao> findTransaccaos(Long id, String nome, String codigo, Boolean active);
+	public List<Profile> findProfiles(String nome, boolean active);
+	public void createTransaccao(Transaccao transaccao);
 
 }

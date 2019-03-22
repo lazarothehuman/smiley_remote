@@ -67,4 +67,13 @@ public class AlertUtils {
 		
 	}
 
+	public static void alertDeveloper() {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("OPS!");
+		alert.setContentText("Contacte o Júnior");
+		alert.setHeaderText(null);
+		alert.showAndWait();
+		
+	}
+
 }

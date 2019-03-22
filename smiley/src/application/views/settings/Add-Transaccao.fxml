@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: #ffffff;" stylesheets="@../../../resources/padrao.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.settings.AddTransaccaoController">
+   <children>
+      <Label alignment="CENTER" prefHeight="106.0" prefWidth="700.0" style="-fx-background-color: #ea9400;" text="ADICIONAR TRANSACÇÃO" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <VBox alignment="CENTER" layoutX="197.0" layoutY="106.0" prefHeight="694.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="106.0">
+         <children>
+            <JFXTextField fx:id="codigo" focusColor="#ea9400" labelFloat="true" layoutX="198.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="300.0" prefHeight="50.0" prefWidth="300.0" promptText="Codigo" unFocusColor="#ea9400">
+               <VBox.margin>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </JFXTextField>
+            <JFXTextField fx:id="url" focusColor="#ea9400" labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="300.0" prefHeight="50.0" prefWidth="300.0" promptText="URL" unFocusColor="#ea9400">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+               </VBox.margin>
+            </JFXTextField>
+           
+            <Button layoutX="266.0" layoutY="430.0" mnemonicParsing="false" onAction="#gravar" prefHeight="58.0" prefWidth="95.0" text="Gravar">
+               <VBox.margin>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

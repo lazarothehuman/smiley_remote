@@ -11,21 +11,28 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import smiley.managers.DataManager;
 import smiley.managers.DataManagerImp;
 import smiley.models.Medico;
 import smiley.models.Sexo;
+import smiley.utils.AlertUtils;
+import smiley.utils.ApplicationUtils;
 import smiley.utils.FormatUtils;
+import smiley.utils.FrameManager;
 import smiley.utils.Validations;
 
 public class ModifyMedicoController implements Initializable {
+
+	@FXML
+	private AnchorPane ContentPane;
 
 	@FXML
 	private ImageView add;
@@ -49,37 +56,33 @@ public class ModifyMedicoController implements Initializable {
 	private CheckBox isActive = new CheckBox();
 
 	DataManager dataManager = new DataManagerImp();
+	FrameManager frameManager = new FrameManager();
 
 	Medico medico;
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		medico = (Medico) ApplicationUtils.take("medico");
 		comboSex.setItems(FXCollections.observableArrayList(Sexo.values()));
-		
-	}
+		setValues();
 
-	public void setMedico(Medico medico) {
-		if (medico != null) {
-			this.medico = medico;
-			setValues();
-		}
 	}
 
 	public void setValues() {
 		if (medico != null) {
 			nameTF.setText(this.medico.getName());
-			if(this.medico.getEmail()!=null)
+			if (this.medico.getEmail() != null)
 				emailTF.setText(this.medico.getEmail());
-			if(this.medico.getTelefone()!= null)
+			if (this.medico.getTelefone() != null)
 				phoneTF.setText(this.medico.getTelefone());
 			comboSex.setValue(this.medico.getSexo());
 			isActive.setSelected(this.medico.getActive());
 			LocalDate localDate = FormatUtils.formatDateToBox(this.medico.getDataNascimento());
 			dateNasc.setValue(localDate);
 		}
-		
+
 	}
-	
+
 	public void modify() {
 		Alert alert;
 		String nome = nameTF.getText();
@@ -118,24 +121,29 @@ public class ModifyMedicoController implements Initializable {
 					alert.showAndWait();
 				}
 			}
-			if(isActive.isSelected())
+			if (isActive.isSelected())
 				this.medico.setActive(true);
 			else
 				this.medico.setActive(false);
 			dataManager.updateMedico(this.medico);
-			alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Modificado com sucesso");
-			alert.setHeaderText(null);
-			alert.setContentText("O médico " + nome + " foi modificado com sucesso");
-			alert.showAndWait();
-			Stage stage = (Stage) add.getScene().getWindow();
-			stage.close();
+			AlertUtils.alertSucesso("Adicionado com sucesso");
+			setContent(frameManager.viewMedicos(dataManager.findCurrentUser()));
 		} else {
 			alert = new Alert(AlertType.ERROR);
-			alert.setContentText("Campos principais não preenchidos, impossível adicionar um novo cliente");
+			alert.setContentText("Campos principais não preenchidos, impossível adicionar um novo medico");
 			alert.setHeaderText(null);
 			alert.showAndWait();
 			// alert.setTitle("");
+		}
+	}
+
+	public void setContent(AnchorPane content) {
+		if (content != null) {
+			ContentPane.setTopAnchor(content, 0.0);
+			ContentPane.setLeftAnchor(content, 0.0);
+			ContentPane.setBottomAnchor(content, 0.0);
+			ContentPane.setRightAnchor(content, 0.0);
+			ContentPane.getChildren().setAll(content);
 		}
 	}
 

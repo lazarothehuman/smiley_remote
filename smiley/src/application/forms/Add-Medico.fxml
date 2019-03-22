@@ -8,19 +8,19 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="400.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.forms.AddMedicoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.forms.AddMedicoController">
    <children>
-      <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #ea9400;" text="ADICIONAR MEDICO" textAlignment="CENTER" textFill="WHITE">
+      <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #ea9400;" text="ADICIONAR MEDICO" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <ImageView fx:id="add" fitHeight="58.0" fitWidth="59.0" layoutX="176.0" layoutY="707.0" onMouseClicked="#add" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="add" fitHeight="58.0" fitWidth="59.0" layoutX="512.0" layoutY="638.0" onMouseClicked="#add" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="icons8-plus-filled-100.png" />
          </image>
       </ImageView>
-      <VBox alignment="CENTER" layoutX="56.0" layoutY="145.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="510.0" prefWidth="288.0" spacing="85.0">
+      <VBox alignment="CENTER" layoutX="406.0" layoutY="108.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="510.0" prefWidth="288.0" spacing="85.0">
          <children>
             <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="298.0" spacing="15.0">
                <children>
