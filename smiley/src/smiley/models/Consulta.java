@@ -38,9 +38,16 @@ public class Consulta {
 
 	@Column(nullable = false)
 	private Date dataRealizacao;
+	
+	@Column
+	private Date dataTermino;
 
 	@Column(nullable = false)
 	private Double custoTotal;
+	
+	@Column(nullable = false, columnDefinition = "bit")
+	private boolean closed = false;
+	
 
 	@Column(nullable = false, columnDefinition = "bit")
 	private Boolean active = true;
@@ -91,6 +98,22 @@ public class Consulta {
 
 	public void setDataRealizacao(Date dataRealizacao) {
 		this.dataRealizacao = dataRealizacao;
+	}
+
+	public Date getDataTermino() {
+		return dataTermino;
+	}
+
+	public void setDataTermino(Date dataTermino) {
+		this.dataTermino = dataTermino;
+	}
+
+	public boolean isClosed() {
+		return closed;
+	}
+
+	public void setClosed(boolean closed) {
+		this.closed = closed;
 	}
 
 	public List<ProcedimentoConsulta> getProcedimentosConsulta() {
